@@ -1,0 +1,311 @@
+Using pre-set license
+Built from '6000.0/release' branch; Version is '6000.0.44f1 (101c91f3a8fb) revision 1055889'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26100) 64bit Core' Language: 'es' Physical Memory: 16075 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.0.44f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+C:/Users/pelay/UDC/Cuatri2/CIIE/3D/GameProject
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+56321
+-job-worker-count
+3
+-background-job-worker-count
+8
+-gc-helper-count
+1
+Successfully changed project path to: C:/Users/pelay/UDC/Cuatri2/CIIE/3D/GameProject
+C:/Users/pelay/UDC/Cuatri2/CIIE/3D/GameProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [13380]  Target information:
+
+Player connection [13380]  * "[IP] 192.168.192.1 [Port] 0 [Flags] 2 [Guid] 3695690780 [EditorId] 3695690780 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-ALSP9RM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [13380]  * "[IP] 192.168.116.1 [Port] 0 [Flags] 2 [Guid] 3695690780 [EditorId] 3695690780 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-ALSP9RM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [13380]  * "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 3695690780 [EditorId] 3695690780 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-ALSP9RM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [13380]  * "[IP] 172.29.208.1 [Port] 0 [Flags] 2 [Guid] 3695690780 [EditorId] 3695690780 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-ALSP9RM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [13380]  * "[IP] 172.26.0.153 [Port] 0 [Flags] 2 [Guid] 3695690780 [EditorId] 3695690780 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-ALSP9RM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [13380] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [13380] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 3
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 6.79 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.44f1 (101c91f3a8fb)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.44f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/pelay/UDC/Cuatri2/CIIE/3D/GameProject/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:         Direct3D 12 [level 12.1]
+    Renderer:        NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2520)
+    Vendor:          NVIDIA
+    VRAM:            5996 MB
+    App VRAM Budget: 5228 MB
+    Driver:          32.0.15.5597
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.44f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.44f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.44f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56476
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.44f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.44f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.007058 seconds.
+- Loaded All Assemblies, in  0.626 seconds
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.604 seconds
+Domain Reload Profiling: 1225ms
+	BeginReloadAssembly (197ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (56ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (77ms)
+	LoadAllAssembliesAndSetupDomain (274ms)
+		LoadAssemblies (193ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (268ms)
+			TypeCache.Refresh (266ms)
+				TypeCache.ScanAssembly (242ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (604ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (529ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (35ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (85ms)
+			ProcessInitializeOnLoadAttributes (321ms)
+			ProcessInitializeOnLoadMethodAttributes (81ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.424 seconds
+'Packages/com.unity.render-pipelines.high-definition/Editor/Wizard/HDWizard.UIElement.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.high-definition/Editor/Wizard/HDWizard.Configuration.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.high-definition/Editor/Wizard/HDWizard.Window.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 1.65 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.451 seconds
+Domain Reload Profiling: 2858ms
+	BeginReloadAssembly (250ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (45ms)
+	RebuildCommonClasses (53ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (68ms)
+	LoadAllAssembliesAndSetupDomain (1014ms)
+		LoadAssemblies (640ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (524ms)
+			TypeCache.Refresh (397ms)
+				TypeCache.ScanAssembly (363ms)
+			BuildScriptInfoCaches (106ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (1452ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1214ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (170ms)
+			ProcessInitializeOnLoadAttributes (459ms)
+			ProcessInitializeOnLoadMethodAttributes (565ms)
+			AfterProcessingInitializeOnLoad (10ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 1.38 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 520 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7148 unused Assets / (6.1 MB). Loaded Objects now: 8144.
+Memory consumption went from 277.2 MB to 271.1 MB.
+Total: 19.463200 ms (FindLiveObjects: 2.749200 ms CreateObjectMapping: 2.547600 ms MarkObjects: 8.430600 ms  DeleteObjects: 5.733600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 943332.996045 seconds.
+  path: Assets/MediumMechStriker/FBX/MediumMechStriker/Materials/MediumMechStrikerWhite_MaskMap.png
+  artifactKey: Guid(eed80e6d5f0158a43961e29ed7373a10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/MediumMechStriker/Materials/MediumMechStrikerWhite_MaskMap.png using Guid(eed80e6d5f0158a43961e29ed7373a10) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '22f2a0574d59fc9bdb83dfdf9d8f4dae') in 0.1636047 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.231138 seconds.
+  path: Assets/MediumMechStriker/FBX/MediumMechStriker/Materials/MediumMechStrikerYellow.mat
+  artifactKey: Guid(db4d9882fe4ee014cb36e8ff20b99b67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/MediumMechStriker/Materials/MediumMechStrikerYellow.mat using Guid(db4d9882fe4ee014cb36e8ff20b99b67) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3942eb4736bbdc260a0e317b80d44fce') in 3.7132487 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 50
+
+========================================================================
+Received Import Request.
+  Time since last request: 276.666154 seconds.
+  path: Assets/MediumMechStriker/Prefabs/ScifiMechStandardWeapons/LRMRacks/ScifiMechLRMRackX5Half.prefab
+  artifactKey: Guid(ddf95f567b12c8941b07e1125d4df28c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/Prefabs/ScifiMechStandardWeapons/LRMRacks/ScifiMechLRMRackX5Half.prefab using Guid(ddf95f567b12c8941b07e1125d4df28c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5139753cfaf1996f442b9e3010b98802') in 0.0940975 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
+
+========================================================================
+Received Import Request.
+  Time since last request: 42.549681 seconds.
+  path: Assets/MediumMechStriker/FBX/MediumMechStriker/MediumMechStrikerDestroyedArmLeft.fbx
+  artifactKey: Guid(fda220606dd83ee40ab1edacdc39758a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/MediumMechStriker/MediumMechStrikerDestroyedArmLeft.fbx using Guid(fda220606dd83ee40ab1edacdc39758a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e81bf4ea749b76ece3ba19b9ec5451ad') in 0.2086702 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/MediumMechStriker/FBX/MediumMechStriker/MediumMechStrikerHandLeft.fbx
+  artifactKey: Guid(1ee7137e5334c3345a32b2d315b7ff69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/MediumMechStriker/MediumMechStrikerHandLeft.fbx using Guid(1ee7137e5334c3345a32b2d315b7ff69) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2a3e4ad93100881955f40f1e63ac1591') in 0.1342583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/MediumMechStriker/FBX/MediumMechStriker/MediumMechStrikerHandRight.fbx
+  artifactKey: Guid(667a3a4f75dcb294e92e1438878220e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/MediumMechStriker/MediumMechStrikerHandRight.fbx using Guid(667a3a4f75dcb294e92e1438878220e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e0586aec1780a9c745ff157be495d610') in 0.1132507 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.881484 seconds.
+  path: Assets/MediumMechStriker/FBX/ScifiMechAmmunition/ScifiMechHeavyCanonProjectile.fbx
+  artifactKey: Guid(6538c422acadfe94487c2a6a9a0038b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/ScifiMechAmmunition/ScifiMechHeavyCanonProjectile.fbx using Guid(6538c422acadfe94487c2a6a9a0038b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '658158367d6833f9c6b71e16e78ba7ce') in 0.0556604 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/MediumMechStriker/FBX/ScifiMechAmmunition/ScifiMechLighCanonCartridge.fbx
+  artifactKey: Guid(bada7ea0d38ecd74cbef682bd63b467c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/ScifiMechAmmunition/ScifiMechLighCanonCartridge.fbx using Guid(bada7ea0d38ecd74cbef682bd63b467c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2ba1981dfec5a5c5272685dd0b588f48') in 0.0614937 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/MediumMechStriker/FBX/ScifiMechAmmunition/ScifiMechHeavyCanonShell.fbx
+  artifactKey: Guid(acff79db0b9052b4fa8dc39a277b6691) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/ScifiMechAmmunition/ScifiMechHeavyCanonShell.fbx using Guid(acff79db0b9052b4fa8dc39a277b6691) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dc7b35c89870bcdc4102d5218590a205') in 0.0505413 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/MediumMechStriker/FBX/ScifiMechAmmunition/ScifiMechLighCanonShell.fbx
+  artifactKey: Guid(1499b68c26b7c2643840ebb960b1d843) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/ScifiMechAmmunition/ScifiMechLighCanonShell.fbx using Guid(1499b68c26b7c2643840ebb960b1d843) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2552dcda36390e97dd2afcdcf990503c') in 0.0541774 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.464453 seconds.
+  path: Assets/MediumMechStriker/FBX/ScifiMechDecals/DecalAncientEagle.fbx
+  artifactKey: Guid(4fa207d9b6760cf45bc5116d6a46a012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/ScifiMechDecals/DecalAncientEagle.fbx using Guid(4fa207d9b6760cf45bc5116d6a46a012) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0e6f696b5608016cc92ca1f274860bc9') in 18.7873471 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/MediumMechStriker/FBX/ScifiMechAmmunition/Materials/ScifiMechAmmunition_MaskMap.png
+  artifactKey: Guid(70b5230f7b4054c48af8c7b24e5135cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/ScifiMechAmmunition/Materials/ScifiMechAmmunition_MaskMap.png using Guid(70b5230f7b4054c48af8c7b24e5135cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'efe0798a999834a37f45bd5c411e220d') in 0.0237941 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/MediumMechStriker/FBX/ScifiMechDecals/Materials
+  artifactKey: Guid(4246a0c9a1dd93a4596ed3bd2d31dc10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/ScifiMechDecals/Materials using Guid(4246a0c9a1dd93a4596ed3bd2d31dc10) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5b3b1a23301d325e995e8ba5fbf43f22') in 0.0023978 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/MediumMechStriker/FBX/ScifiMechAmmunition/Materials/ScifiMechAmmunition.mat
+  artifactKey: Guid(2af359df80d6b2d479e5b8d5a7fb337e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MediumMechStriker/FBX/ScifiMechAmmunition/Materials/ScifiMechAmmunition.mat using Guid(2af359df80d6b2d479e5b8d5a7fb337e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c679daf24e784000f04c909a1e73d4d5') in 0.0518622 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+
