@@ -1,39 +1,57 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     public float horizontalInput;
     public float verticalInput;
-    public float turnSpeed = 10;
-
+    public float turnSpeed = 10f;
     public float rotationSpeed = 360f;
-
-    public float frontWheelsAngle = 30f;
-    public float currentFrontWheelsAngle = 0f;
-
     public float moveSpeed = 10f;
 
     public Transform[] wheels;
 
-    public Transform frontRightWheel;
-    public Transform frontLeftWheel;
+    private Rigidbody rb;
 
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+    }
 
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        // Movimiento del tanque
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime * verticalInput);
-        transform.Rotate(Vector3.up * moveSpeed * horizontalInput * turnSpeed * Time.deltaTime);
+        RotateTank();
+        RotateWheels();
+    }
 
-        // Ruedas girando
+    void FixedUpdate()
+    {
+        MoveTank();
+    }
+
+    void MoveTank()
+    {
+        Vector3 move = transform.forward * verticalInput * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + move);
+    }
+
+    void RotateTank()
+    {
+        float turn = horizontalInput * turnSpeed * moveSpeed * Time.deltaTime;
+        Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
+        rb.MoveRotation(rb.rotation * turnRotation);
+    }
+
+    void RotateWheels()
+    {
         foreach (Transform wheel in wheels)
         {
             float wheelRotation = verticalInput * rotationSpeed * Time.deltaTime;
 
-            // Si está girando, sumar o restar según el lado de la rueda
             if (verticalInput == 0 && horizontalInput != 0)
             {
                 if (wheel.name.Contains("left"))
@@ -48,12 +66,5 @@ public class PlayerMovement : MonoBehaviour
 
             wheel.Rotate(Vector3.right, wheelRotation);
         }
-
-        // Direccionar las ruedas delanteras
-        currentFrontWheelsAngle = horizontalInput * frontWheelsAngle;
-        frontLeftWheel.localRotation = Quaternion.Euler(0f, currentFrontWheelsAngle, 0f);
-        frontRightWheel.localRotation = Quaternion.Euler(0f, currentFrontWheelsAngle, 0f);
     }
-
-
 }
