@@ -12,11 +12,14 @@ public class PlayerMovement : MonoBehaviour
     public Transform[] wheels;
 
     private Rigidbody rb;
+    private Camera playerCamera; // Referencia a la cámara de jugador
+    public Transform cameraTransform; // El transform de la cámara en primera persona
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        playerCamera = Camera.main;  // Asume que la cámara principal es la cámara de jugador
     }
 
     void Update()
@@ -26,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
 
         RotateTank();
         RotateWheels();
+
+        // Mueve la cámara con el tanque
+        MoveCameraWithTank();
     }
 
     void FixedUpdate()
@@ -67,4 +73,18 @@ public class PlayerMovement : MonoBehaviour
             wheel.Rotate(Vector3.right, wheelRotation);
         }
     }
+
+    void MoveCameraWithTank()
+    {
+        if (cameraTransform != null)
+        {
+            // Desplazamos la cámara un poco más arriba (por ejemplo, 2 unidades en el eje Y)
+            Vector3 offset = new Vector3(0f, 2f, 0f);  // Ajusta 2f a la altura que desees
+
+            // La cámara sigue al tanque en la misma posición, pero con un desplazamiento en Y
+            cameraTransform.position = transform.position + offset; // La cámara se mueve un poco más arriba
+            cameraTransform.rotation = transform.rotation; // La cámara tiene la misma rotación que el tanque
+        }
+    }
+
 }
