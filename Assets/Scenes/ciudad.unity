@@ -53022,6 +53022,11 @@ MonoBehaviour:
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!4 &1599714633 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4024992501267447158, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
+  m_PrefabInstance: {fileID: 1053344950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &1599714634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57013,7 +57018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadddf1e6e6d492428e86d37729f5417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2003143847}
+  target: {fileID: 1599714633}
   smoothSpeed: 0.125
   offset: {x: 0, y: 5, z: -10}
 --- !u!1 &1704099556 stripped

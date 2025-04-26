@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;  // El tanque o el objeto que la cámara debe seguir
-    public float smoothSpeed = 0.125f;  // Qué tan suave debe ser el movimiento
-    public Vector3 offset;  // Distancia entre la cámara y el tanque
+    public Transform target;
+    public float smoothSpeed = 0.125f;
+    public Vector3 offset;
 
-    void FixedUpdate()
+    private Vector3 velocity = Vector3.zero;
+
+    void FixedUpdate()  // Usamos FixedUpdate para seguir objetos físicos
     {
-        Vector3 desiredPosition = target.position + offset;  // La posición deseada con el offset
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);  // Suaviza el movimiento
-        transform.position = smoothedPosition;  // Actualiza la posición de la cámara
+        Vector3 desiredPosition = target.position + target.TransformDirection(offset);
+        transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
+
+        transform.LookAt(target.position + Vector3.up * 2f);
     }
 }
