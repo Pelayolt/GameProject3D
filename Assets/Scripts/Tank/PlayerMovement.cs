@@ -12,14 +12,14 @@ public class PlayerMovement : MonoBehaviour
     public Transform[] wheels;
 
     private Rigidbody rb;
-    private Camera playerCamera; // Referencia a la cámara de jugador
-    public Transform cameraTransform; // El transform de la cámara en primera persona
+    private Camera playerCamera; // Referencia a la cï¿½mara de jugador
+    public Transform cameraTransform; // El transform de la cï¿½mara en primera persona
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        playerCamera = Camera.main;  // Asume que la cámara principal es la cámara de jugador
+        playerCamera = Camera.main;  // Asume que la cï¿½mara principal es la cï¿½mara de jugador
     }
 
     void Update()
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         RotateTank();
         RotateWheels();
 
-        // Mueve la cámara con el tanque
+        // Mueve la cï¿½mara con el tanque
         MoveCameraWithTank();
     }
 
@@ -41,9 +41,10 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveTank()
     {
-        Vector3 move = transform.forward * verticalInput * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + move);
+        Vector3 move = transform.forward * verticalInput * moveSpeed;
+        rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z); // Mantener la velocidad vertical para la gravedad
     }
+
 
     void RotateTank()
     {
@@ -78,12 +79,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (cameraTransform != null)
         {
-            // Desplazamos la cámara un poco más arriba (por ejemplo, 2 unidades en el eje Y)
+            // Desplazamos la cï¿½mara un poco mï¿½s arriba (por ejemplo, 2 unidades en el eje Y)
             Vector3 offset = new Vector3(0f, 2f, 0f);  // Ajusta 2f a la altura que desees
 
-            // La cámara sigue al tanque en la misma posición, pero con un desplazamiento en Y
-            cameraTransform.position = transform.position + offset; // La cámara se mueve un poco más arriba
-            cameraTransform.rotation = transform.rotation; // La cámara tiene la misma rotación que el tanque
+            // La cï¿½mara sigue al tanque en la misma posiciï¿½n, pero con un desplazamiento en Y
+            cameraTransform.position = transform.position + offset; // La cï¿½mara se mueve un poco mï¿½s arriba
+            cameraTransform.rotation = transform.rotation; // La cï¿½mara tiene la misma rotaciï¿½n que el tanque
         }
     }
 
