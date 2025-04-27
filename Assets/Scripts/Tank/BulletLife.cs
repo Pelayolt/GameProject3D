@@ -15,7 +15,9 @@ public class BulletLife : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic; // 🔥 Agregado
     }
+
 
     private void OnEnable()
     {
