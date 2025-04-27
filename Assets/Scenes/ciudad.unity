@@ -34723,19 +34723,19 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1599714626}
-    - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1599714625}
     - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1599714630}
     - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1599714634}
+      addedObject: {fileID: 1599714637}
     - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1599714637}
+      addedObject: {fileID: 1599714626}
+    - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1599714634}
     - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1599714640}
@@ -53770,8 +53770,8 @@ MonoBehaviour:
   thirdPersonCamera: {fileID: 1704015173}
   turretRotationSpeed: 5
   gunElevationSpeed: 5
-  minGunElevation: -10
-  maxGunElevation: 10
+  minGunElevation: -20
+  maxGunElevation: 20
   cameraSensitivity: 2
 --- !u!4 &1599714633 stripped
 Transform:

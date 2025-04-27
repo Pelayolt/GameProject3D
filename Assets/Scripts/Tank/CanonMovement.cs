@@ -89,7 +89,7 @@ public class TankCameraControl : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000f))
         {
             Vector3 targetPoint = hitInfo.point;
 
