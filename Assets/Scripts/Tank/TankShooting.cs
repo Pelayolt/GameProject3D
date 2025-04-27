@@ -3,10 +3,14 @@ using UnityEngine;
 public class TankShooting : MonoBehaviour
 {
     public Transform fireTransform;
-    public float launchForce = 15f;
+    public float launchForce = 80f;
+    private float cooldownTimer = 0f;
     public float cooldownTime = 1f; // Tiempo entre disparos (en segundos)
+    
 
-    private float cooldownTimer;
+    public AudioSource audioSource;      // 🔊 Fuente de sonido
+    public AudioClip fireClip;            // 🎶 Sonido de disparo
+
 
     void Update()
     {
@@ -30,5 +34,10 @@ public class TankShooting : MonoBehaviour
         bullet.gameObject.SetActive(true);
 
         bullet.linearVelocity = launchForce * fireTransform.forward;
+
+        if (audioSource != null && fireClip != null)
+        {
+            audioSource.PlayOneShot(fireClip);
+        }
     }
 }
