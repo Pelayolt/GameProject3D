@@ -79,13 +79,39 @@ public class PlayerMovement : MonoBehaviour
     {
         if (cameraTransform != null)
         {
-            // Desplazamos la c�mara un poco m�s arriba (por ejemplo, 2 unidades en el eje Y)
-            Vector3 offset = new Vector3(0f, 2f, 0f);  // Ajusta 2f a la altura que desees
+            Vector3 offset = new Vector3(0f, 2f, 0f);
 
             // La c�mara sigue al tanque en la misma posici�n, pero con un desplazamiento en Y
             cameraTransform.position = transform.position + offset; // La c�mara se mueve un poco m�s arriba
             cameraTransform.rotation = transform.rotation; // La c�mara tiene la misma rotaci�n que el tanque
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Destructible"))
+        {
+            Rigidbody otherRb = collision.rigidbody;
+
+            if (otherRb == null)
+            {
+                Debug.LogWarning("El objeto destructible no tiene Rigidbody");
+                return;
+            }
+
+            // Activar la física
+            otherRb.isKinematic = false;
+            otherRb.constraints = RigidbodyConstraints.None;
+
+            Vector3 forceDirection = collision.transform.position - transform.position;
+            forceDirection.y = 0.2f; // Muy poquito hacia arriba
+            otherRb.AddForce(forceDirection.normalized * 5f, ForceMode.Impulse); // Mucha menos fuerza
+            
+
+            // Cambiar la capa para que ya no bloquee
+            collision.gameObject.layer = LayerMask.NameToLayer("NoCollide");
+        }
+    }
+
 
 }
