@@ -12,7 +12,7 @@ public class FollowFirstPerson : MonoBehaviour
 
     void Start()
     {
-        // Guardar el offset inicial
+        // Calcular el offset automáticamente basado en la posición inicial en el mundo
         offset = Quaternion.Inverse(tankTurret.rotation) * (transform.position - tankTurret.position);
     }
 
@@ -31,31 +31,26 @@ public class FollowFirstPerson : MonoBehaviour
     void Update()
     {
         if (!firstPersonCamera.gameObject.activeSelf) return;
-        if(Time.timeScale == 0)
-            return;
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        // Rotar horizontalmente el tanque
         tankTurret.Rotate(Vector3.up * mouseX);
-
-        // Acumular rotaci�n vertical (pitch)
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -60f, 60f);
+
+        transform.localRotation = Quaternion.Euler(xRotation, tankTurret.eulerAngles.y, 0f);
     }
 
     void LateUpdate()
     {
         if (!firstPersonCamera.gameObject.activeSelf) return;
 
-        // Posici�n relativa al tanque
         Vector3 desiredPosition = tankTurret.position + tankTurret.rotation * offset;
         transform.position = desiredPosition;
 
-        // Rotaci�n: vertical controlada por rat�n, horizontal por la torreta
-        Quaternion verticalRot = Quaternion.Euler(xRotation, 0f, 0f);
-        Quaternion horizontalRot = Quaternion.Euler(0f, tankTurret.eulerAngles.y, 0f);
-        transform.rotation = horizontalRot * verticalRot;
+        // La rotación vertical se mantiene igual
+        transform.localRotation = Quaternion.Euler(xRotation, tankTurret.eulerAngles.y, 0f);
     }
+
 }

@@ -6,7 +6,6 @@ public class TankAimController : MonoBehaviour
     public Transform turret;
     public Transform gun;
     public Camera thirdPersonCamera;
-    public bool thirdPerspective = false;
 
     [Header("First Person Settings")]
     public float mouseSensitivity = 20f;
@@ -22,13 +21,10 @@ public class TankAimController : MonoBehaviour
 
     void Update()
     {
-        if(Time.timeScale == 0)
-            return;
-            
-        if (!thirdPerspective)
+        if (Input.GetMouseButton(1))
             HandleFirstPersonAim();
         else
-            HandleThirdPersonAim(); 
+            HandleThirdPersonAim();
     }
 
     void HandleFirstPersonAim()
@@ -39,13 +35,10 @@ public class TankAimController : MonoBehaviour
         // Rotar torreta
         turret.Rotate(Vector3.up * mouseX * turretRotationSpeed * Time.deltaTime);
 
-        // Elevar/bajar el ca��n
+        // Elevar/bajar el cañón
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, minGunElevation, maxGunElevation);
         gun.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
-        if(Input.GetMouseButtonDown(1))
-            thirdPerspective = true;
     }
 
     void HandleThirdPersonAim()
@@ -62,15 +55,11 @@ public class TankAimController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
             turret.rotation = Quaternion.Slerp(turret.rotation, targetRotation, turretRotationSpeed * Time.deltaTime);
 
-            // Ajustar elevaci�n del ca��n
+            // Ajustar elevación del cañón
             Vector3 localTarget = turret.InverseTransformPoint(targetPoint);
             float angle = -Mathf.Atan2(localTarget.y, localTarget.z) * Mathf.Rad2Deg;
             angle = Mathf.Clamp(angle, minGunElevation, maxGunElevation);
             gun.localRotation = Quaternion.Lerp(gun.localRotation, Quaternion.Euler(angle, 0f, 0f), gunElevationSpeed * Time.deltaTime);
         }
-        
-
-        if(Input.GetMouseButtonDown(1))
-            thirdPerspective = false;
     }
 }

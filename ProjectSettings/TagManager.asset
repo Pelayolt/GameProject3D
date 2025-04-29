@@ -14,8 +14,8 @@ TagManager:
   - TankPlayer
   - TankEnemies
   - Projectile
-  - 
-  - 
+  - Destructible
+  - NoCollide
   - 
   - 
   - 
