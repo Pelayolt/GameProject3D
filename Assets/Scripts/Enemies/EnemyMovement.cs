@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
             transform.Translate((direction * moveSpeed) * Time.deltaTime);
         }else
         {
-            tankShooting.Fire();
+            tankShooting.equippedWeapon.Fire();
         }
 
 
