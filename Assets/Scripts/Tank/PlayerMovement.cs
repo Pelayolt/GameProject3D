@@ -81,13 +81,14 @@ public class PlayerMovement : MonoBehaviour
             otherRb.isKinematic = false;
             otherRb.constraints = RigidbodyConstraints.None;
 
+            // Opcional: aplicar fuerza leve
             Vector3 forceDirection = collision.transform.position - transform.position;
-            forceDirection.y = 0.2f; // Muy poquito hacia arriba
-            otherRb.AddForce(forceDirection.normalized * 5f, ForceMode.Impulse); // Mucha menos fuerza
-            
+            forceDirection.y = 0.1f;
+            otherRb.AddForce(forceDirection.normalized * 3f, ForceMode.Impulse);
 
-            // Cambiar la capa para que ya no bloquee
+            // Cambiar la capa solo si sigue colisionando con el suelo
             collision.gameObject.layer = LayerMask.NameToLayer("NoCollide");
         }
     }
+
 }
