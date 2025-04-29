@@ -1,0 +1,76 @@
+using UnityEngine;
+
+public class TankAimController : MonoBehaviour
+{
+    [Header("References")]
+    public Transform turret;
+    public Transform gun;
+    public Camera thirdPersonCamera;
+    public bool thirdPerspective = false;
+
+    [Header("First Person Settings")]
+    public float mouseSensitivity = 20f;
+    public float turretRotationSpeed = 5f;
+    public float minGunElevation = -5f;
+    public float maxGunElevation = 20f;
+
+    [Header("Third Person Settings")]
+    public float gunElevationSpeed = 5f;
+
+    private float xRotation = 0f;
+
+
+    void Update()
+    {
+        if(Time.timeScale == 0)
+            return;
+            
+        if (!thirdPerspective)
+            HandleFirstPersonAim();
+        else
+            HandleThirdPersonAim(); 
+    }
+
+    void HandleFirstPersonAim()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+        // Rotar torreta
+        turret.Rotate(Vector3.up * mouseX * turretRotationSpeed * Time.deltaTime);
+
+        // Elevar/bajar el ca��n
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, minGunElevation, maxGunElevation);
+        gun.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        if(Input.GetMouseButtonDown(1))
+            thirdPerspective = true;
+    }
+
+    void HandleThirdPersonAim()
+    {
+        Ray ray = thirdPersonCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000f))
+        {
+            Vector3 targetPoint = hitInfo.point;
+
+            // Rotar torreta en horizontal
+            Vector3 directionToTarget = targetPoint - turret.position;
+            directionToTarget.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+            turret.rotation = Quaternion.Slerp(turret.rotation, targetRotation, turretRotationSpeed * Time.deltaTime);
+
+            // Ajustar elevaci�n del ca��n
+            Vector3 localTarget = turret.InverseTransformPoint(targetPoint);
+            float angle = -Mathf.Atan2(localTarget.y, localTarget.z) * Mathf.Rad2Deg;
+            angle = Mathf.Clamp(angle, minGunElevation, maxGunElevation);
+            gun.localRotation = Quaternion.Lerp(gun.localRotation, Quaternion.Euler(angle, 0f, 0f), gunElevationSpeed * Time.deltaTime);
+        }
+        
+
+        if(Input.GetMouseButtonDown(1))
+            thirdPerspective = false;
+    }
+}
