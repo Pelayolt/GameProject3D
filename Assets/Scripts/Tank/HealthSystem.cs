@@ -3,14 +3,23 @@ using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
-    public Image healthBarFill; // Aquí arrastras tu "Health bar" en el inspector
+    public Image healthBarFill;
     public float maxHealth = 100f;
     private float currentHealth;
+
+    private Vector3 startPosition;
+    private Quaternion startRotation;
+    private Rigidbody rb;
 
     void Start()
     {
         currentHealth = maxHealth;
         UpdateHealthUI();
+
+        startPosition = transform.position;
+        startRotation = transform.rotation;
+
+        rb = GetComponent<Rigidbody>();
     }
 
     public void TakeDamage(float amount)
@@ -18,6 +27,11 @@ public class HealthSystem : MonoBehaviour
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
+
+        if (currentHealth <= 0f)
+        {
+            Respawn();
+        }
     }
 
     public void Heal(float amount)
@@ -35,15 +49,32 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    void Respawn()
+    {
+        // Resetear posiciï¿½n y rotaciï¿½n
+        transform.position = startPosition;
+        transform.rotation = startRotation;
+
+        // Resetear velocidades si tiene Rigidbody
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        currentHealth = maxHealth;
+        UpdateHealthUI();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            TakeDamage(10f); // Pierde 10 de vida cuando pulsas H
+            TakeDamage(10f);
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
-            Heal(10f); // Se cura 10 de vida cuando pulsas J
+            Heal(10f);
         }
     }
 }
