@@ -12,14 +12,11 @@ public class PlayerMovement : MonoBehaviour
     public Transform[] wheels;
 
     private Rigidbody rb;
-    private Camera playerCamera; // Referencia a la c�mara de jugador
-    public Transform cameraTransform; // El transform de la c�mara en primera persona
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        playerCamera = Camera.main;  // Asume que la c�mara principal es la c�mara de jugador
     }
 
     void Update()
@@ -27,11 +24,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        RotateTank();
         RotateWheels();
-
-        // Mueve la c�mara con el tanque
-        MoveCameraWithTank();
     }
 
     void FixedUpdate()
@@ -41,14 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveTank()
     {
+        float turn = horizontalInput * turnSpeed * moveSpeed * Time.deltaTime;
+
         Vector3 move = transform.forward * verticalInput * moveSpeed;
         rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z); // Mantener la velocidad vertical para la gravedad
-    }
 
-
-    void RotateTank()
-    {
-        float turn = horizontalInput * turnSpeed * moveSpeed * Time.deltaTime;
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
         rb.MoveRotation(rb.rotation * turnRotation);
     }
@@ -72,18 +62,6 @@ public class PlayerMovement : MonoBehaviour
             }
 
             wheel.Rotate(Vector3.right, wheelRotation);
-        }
-    }
-
-    void MoveCameraWithTank()
-    {
-        if (cameraTransform != null)
-        {
-            Vector3 offset = new Vector3(0f, 2f, 0f);
-
-            // La c�mara sigue al tanque en la misma posici�n, pero con un desplazamiento en Y
-            cameraTransform.position = transform.position + offset; // La c�mara se mueve un poco m�s arriba
-            cameraTransform.rotation = transform.rotation; // La c�mara tiene la misma rotaci�n que el tanque
         }
     }
 
@@ -112,6 +90,4 @@ public class PlayerMovement : MonoBehaviour
             collision.gameObject.layer = LayerMask.NameToLayer("NoCollide");
         }
     }
-
-
 }

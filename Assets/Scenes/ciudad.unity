@@ -24345,7 +24345,7 @@ Transform:
   m_GameObject: {fileID: 637158353}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.99, y: 4.5, z: -1.3}
+  m_LocalPosition: {x: -0.908, y: 4.68, z: -1.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24365,7 +24365,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankTurret: {fileID: 2003143847}
   followSpeed: 5
-  offset: {x: 0, y: 0, z: 0}
+  firstPersonCamera: {fileID: 637158355}
+  mouseSensitivity: 2
 --- !u!1001 &638164881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24891,6 +24892,52 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1357995375}
   m_SourcePrefab: {fileID: 100100000, guid: e2ffb9183a7dce445adfb3d2d4d7bfd6, type: 3}
+--- !u!1 &654890115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654890117}
+  - component: {fileID: 654890116}
+  m_Layer: 0
+  m_Name: Camera Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &654890116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654890115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09632d15a9939634bbdcb9931b8dbf4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstPersonCamera: {fileID: 637158355}
+  thirdPersonCamera: {fileID: 1704015173}
+--- !u!4 &654890117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654890115}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5030425, y: 2.2247891, z: -1.9845765}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &655917966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38909,10 +38956,16 @@ PrefabInstance:
       addedObject: {fileID: 1599714625}
     - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1599714630}
+      addedObject: {fileID: 1599714637}
     - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1599714637}
+      addedObject: {fileID: 1599714641}
+    - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1599714645}
+    - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1599714644}
     - targetCorrespondingSourceObject: {fileID: 3354916976622783175, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1599714626}
@@ -60454,7 +60507,6 @@ MonoBehaviour:
   - {fileID: 1088846171}
   - {fileID: 1498890600}
   - {fileID: 866357571}
-  cameraTransform: {fileID: 637158356}
 --- !u!54 &1599714626
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -60482,27 +60534,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &1599714630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599714624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3db9801f954dd324fbaf63c029bc6cf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turret: {fileID: 2003143847}
-  gun: {fileID: 349879076}
-  firstPersonCamera: {fileID: 637158355}
-  thirdPersonCamera: {fileID: 1704015173}
-  turretRotationSpeed: 5
-  gunElevationSpeed: 5
-  minGunElevation: -20
-  maxGunElevation: 20
-  cameraSensitivity: 2
 --- !u!4 &1599714633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4024992501267447158, guid: 997823ade0e2fc249a876fa159f69cc3, type: 3}
@@ -60643,6 +60674,50 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1599714641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599714624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831e43a5f36de4f4ea235ffcaed19c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1599714644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599714624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d64cbbb8b59022449649eb27a160ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 2003143847}
+  gun: {fileID: 349879076}
+  thirdPersonCamera: {fileID: 1704015173}
+  mouseSensitivity: 20
+  turretRotationSpeed: 5
+  minGunElevation: -20
+  maxGunElevation: 20
+  gunElevationSpeed: 5
+--- !u!114 &1599714645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599714624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec954368ca599ef4c9ac54bfebfcf6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1600406486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: dac1a631b172e66469fb09e9987bcf57, type: 3}
@@ -65156,6 +65231,7 @@ MonoBehaviour:
   target: {fileID: 1599714633}
   smoothSpeed: 0.125
   offset: {x: 0, y: 5, z: -10}
+  thirdPersonCamera: {fileID: 1704015173}
 --- !u!1 &1704099556 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: b82e76f4092b7d24aaeecddf36fe8d3b, type: 3}
@@ -82098,3 +82174,4 @@ SceneRoots:
   - {fileID: 1674089222}
   - {fileID: 514125816}
   - {fileID: 2143640499}
+  - {fileID: 654890117}
