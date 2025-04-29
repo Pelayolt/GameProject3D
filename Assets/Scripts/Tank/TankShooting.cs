@@ -14,33 +14,33 @@ public class TankShooting : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale == 0)
+            return;
+            
         cooldownTimer += Time.deltaTime;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && cooldownTimer >= cooldownTime)
         {
             Fire();
+            cooldownTimer = 0f;  // Reiniciar el contador de cooldown
         }
     }
 
-    public void Fire()
+    void Fire()
     {
-        if (cooldownTimer >= cooldownTime)
+        Rigidbody bullet = BulletPool.Instance.GetBullet();
+
+        if (bullet == null) return;
+
+        bullet.transform.position = fireTransform.position;
+        bullet.transform.rotation = fireTransform.rotation;
+        bullet.gameObject.SetActive(true);
+
+        bullet.linearVelocity = launchForce * fireTransform.forward;
+
+        if (audioSource != null && fireClip != null)
         {
-            Rigidbody bullet = BulletPool.Instance.GetBullet();
-
-            if (bullet == null) return;
-
-            bullet.transform.position = fireTransform.position;
-            bullet.transform.rotation = fireTransform.rotation;
-            bullet.gameObject.SetActive(true);
-
-            bullet.linearVelocity = launchForce * fireTransform.forward;
-
-            if (audioSource != null && fireClip != null)
-            {
-                audioSource.PlayOneShot(fireClip);
-            }
-            cooldownTimer = 0f;// Reiniciar el contador de cooldown
+            audioSource.PlayOneShot(fireClip);
         }
     }
 }
