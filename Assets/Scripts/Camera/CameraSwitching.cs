@@ -4,13 +4,30 @@ public class CameraSwitcher : MonoBehaviour
 {
     public Camera firstPersonCamera;
     public Camera thirdPersonCamera;
+    public bool thirdPerspective = false;
 
     void Update()
     {
-        bool isAiming = Input.GetMouseButton(1);
+        if(!thirdPerspective){
+            UseFirstCamera();
+        }else{
+            UseThirdCamera();
+        }
+    }
 
-        // Activamos una y desactivamos la otra, asegurándonos que nunca estén las dos desactivadas
-        firstPersonCamera.gameObject.SetActive(isAiming);
-        thirdPersonCamera.gameObject.SetActive(!isAiming);
+    void UseFirstCamera(){
+        firstPersonCamera.gameObject.SetActive(true);
+        thirdPersonCamera.gameObject.SetActive(false);
+
+        if(Input.GetMouseButtonDown(1))
+            thirdPerspective = true;
+    }
+
+    void UseThirdCamera(){
+        firstPersonCamera.gameObject.SetActive(false);
+        thirdPersonCamera.gameObject.SetActive(true);
+
+        if(Input.GetMouseButtonDown(1))
+            thirdPerspective = false;
     }
 }

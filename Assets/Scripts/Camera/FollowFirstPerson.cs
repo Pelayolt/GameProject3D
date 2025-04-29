@@ -31,6 +31,8 @@ public class FollowFirstPerson : MonoBehaviour
     void Update()
     {
         if (!firstPersonCamera.gameObject.activeSelf) return;
+        if(Time.timeScale == 0)
+            return;
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -38,7 +40,7 @@ public class FollowFirstPerson : MonoBehaviour
         // Rotar horizontalmente el tanque
         tankTurret.Rotate(Vector3.up * mouseX);
 
-        // Acumular rotación vertical (pitch)
+        // Acumular rotaciï¿½n vertical (pitch)
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -60f, 60f);
     }
@@ -47,11 +49,11 @@ public class FollowFirstPerson : MonoBehaviour
     {
         if (!firstPersonCamera.gameObject.activeSelf) return;
 
-        // Posición relativa al tanque
+        // Posiciï¿½n relativa al tanque
         Vector3 desiredPosition = tankTurret.position + tankTurret.rotation * offset;
         transform.position = desiredPosition;
 
-        // Rotación: vertical controlada por ratón, horizontal por la torreta
+        // Rotaciï¿½n: vertical controlada por ratï¿½n, horizontal por la torreta
         Quaternion verticalRot = Quaternion.Euler(xRotation, 0f, 0f);
         Quaternion horizontalRot = Quaternion.Euler(0f, tankTurret.eulerAngles.y, 0f);
         transform.rotation = horizontalRot * verticalRot;
