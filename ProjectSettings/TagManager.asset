@@ -16,7 +16,7 @@ TagManager:
   - Projectile
   - Destructible
   - NoCollide
-  - 
+  - OnlyThirdPerson
   - 
   - 
   - 

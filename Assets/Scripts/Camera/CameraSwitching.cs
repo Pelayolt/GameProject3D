@@ -2,15 +2,38 @@
 
 public class CameraSwitcher : MonoBehaviour
 {
+    [Header("Cameras")]
     public Camera firstPersonCamera;
     public Camera thirdPersonCamera;
 
+    [Header("Aiming")]
+    public TankAimController aimHandler;
+
+    private bool isFirstPerson;
+
+    void Start()
+    {
+        SetFirstPerson(false); // Empieza en tercera persona
+    }
+
     void Update()
     {
-        bool isAiming = Input.GetMouseButton(1);
+        if (Input.GetMouseButtonDown(1))
+        {
+            SetFirstPerson(!isFirstPerson);
+        }
 
-        // Activamos una y desactivamos la otra, asegurándonos que nunca estén las dos desactivadas
-        firstPersonCamera.gameObject.SetActive(isAiming);
-        thirdPersonCamera.gameObject.SetActive(!isAiming);
+        if (isFirstPerson)
+            aimHandler.HandleFirstPersonAim();
+        else
+            aimHandler.HandleThirdPersonAim();
+    }
+
+    void SetFirstPerson(bool value)
+    {
+        isFirstPerson = value;
+
+        if (firstPersonCamera != null) firstPersonCamera.gameObject.SetActive(value);
+        if (thirdPersonCamera != null) thirdPersonCamera.gameObject.SetActive(!value);
     }
 }

@@ -2,55 +2,57 @@ using UnityEngine;
 
 public class TankShooting : MonoBehaviour
 {
-    public TankWeapon equippedWeapon;      // El arma equipada (script)
-    public GameObject tankCannonModel;      // Modelo visual del cañón normal
-    public GameObject rocketLauncherModel;  // Modelo visual del lanzacohetes
-
-    public AudioSource audioSource;         // 🎶 Nuevo: fuente de audio para disparo
+    public Transform gun; // Objeto vacío que contiene las armas
+    public AudioSource audioSource;
     public AudioClip fireClip;
+
+    public TankWeapon equippedWeapon;
 
     void Start()
     {
-        EquipCannon(); // 🔥 Forzamos que al empezar solo esté activo el cañón
+        EquipWeapon(0); // Equipa la primera arma al iniciar
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && equippedWeapon != null)
         {
-            if (equippedWeapon != null)
+            bool fired = equippedWeapon.Fire();
+            if (fired && audioSource != null && fireClip != null)
             {
-                bool fired = equippedWeapon.Fire();
-
-                if (fired && audioSource != null && fireClip != null)
-                {
-                    audioSource.PlayOneShot(fireClip);
-                }
+                audioSource.PlayOneShot(fireClip);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            EquipCannon();
+            EquipWeapon(0); // Equipa la primera arma
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            EquipRocketLauncher();
+            EquipWeapon(1); // Equipa la segunda arma
         }
     }
 
-    void EquipCannon()
+    void EquipWeapon(int index)
     {
-        tankCannonModel.SetActive(true);
-        rocketLauncherModel.SetActive(false);
-        equippedWeapon = tankCannonModel.GetComponent<TankWeapon>();
-    }
+        // Desactiva todas las armas
+        for (int i = 0; i < gun.childCount; i++)
+        {
+            gun.GetChild(i).gameObject.SetActive(false);
+        }
 
-    void EquipRocketLauncher()
-    {
-        tankCannonModel.SetActive(false);
-        rocketLauncherModel.SetActive(true);
-        equippedWeapon = rocketLauncherModel.GetComponent<TankWeapon>();
+        // Activa el arma seleccionada si existe
+        if (index >= 0 && index < gun.childCount)
+        {
+            Transform selectedWeapon = gun.GetChild(index);
+            selectedWeapon.gameObject.SetActive(true);
+            equippedWeapon = selectedWeapon.GetComponent<TankWeapon>();
+        }
+        else
+        {
+            equippedWeapon = null;
+        }
     }
 }

@@ -18,6 +18,7 @@ public class RocketLife : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic; //Para detectar bien las colisiones
     }
 
     private void OnEnable()

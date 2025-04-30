@@ -18,16 +18,7 @@ public class TankAimController : MonoBehaviour
 
     private float xRotation = 0f;
 
-
-    void Update()
-    {
-        if (Input.GetMouseButton(1))
-            HandleFirstPersonAim();
-        else
-            HandleThirdPersonAim();
-    }
-
-    void HandleFirstPersonAim()
+    public void HandleFirstPersonAim()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -41,7 +32,7 @@ public class TankAimController : MonoBehaviour
         gun.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
-    void HandleThirdPersonAim()
+    public void HandleThirdPersonAim()
     {
         Ray ray = thirdPersonCamera.ScreenPointToRay(Input.mousePosition);
 

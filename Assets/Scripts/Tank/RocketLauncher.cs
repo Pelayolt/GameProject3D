@@ -3,7 +3,7 @@ using UnityEngine;
 public class RocketLauncher : TankWeapon
 {
     public ProjectilePool rocketPool;
-    public float launchForce = 50f;
+    public float launchForce = 100f;
 
     public override bool Fire()
     {

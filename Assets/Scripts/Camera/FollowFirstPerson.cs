@@ -1,18 +1,22 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class FollowFirstPerson : MonoBehaviour
 {
+    [Header("References")]
     public Transform tankTurret;
-    public float followSpeed = 5f;
-    public Camera firstPersonCamera;
+    public Transform tankGun;
+    public GameObject uiCrosshair;
+
+    [Header("Settings")]
     public float mouseSensitivity = 2f;
 
-    private float xRotation = 0f;
     private Vector3 offset;
+    private Camera cam;
 
     void Start()
     {
-        // Calcular el offset automáticamente basado en la posición inicial en el mundo
+        cam = GetComponent<Camera>();
         offset = Quaternion.Inverse(tankTurret.rotation) * (transform.position - tankTurret.position);
     }
 
@@ -20,37 +24,35 @@ public class FollowFirstPerson : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (uiCrosshair != null)
+            uiCrosshair.SetActive(true);
     }
 
     void OnDisable()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        if (uiCrosshair != null)
+            uiCrosshair.SetActive(false);
     }
 
     void Update()
     {
-        if (!firstPersonCamera.gameObject.activeSelf) return;
-
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-
         tankTurret.Rotate(Vector3.up * mouseX);
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -60f, 60f);
-
-        transform.localRotation = Quaternion.Euler(xRotation, tankTurret.eulerAngles.y, 0f);
     }
 
     void LateUpdate()
     {
-        if (!firstPersonCamera.gameObject.activeSelf) return;
+        float pitch = tankGun.localEulerAngles.x;
+        if (pitch > 180f) pitch -= 360f;
 
-        Vector3 desiredPosition = tankTurret.position + tankTurret.rotation * offset;
-        transform.position = desiredPosition;
+        transform.position = tankTurret.position + tankTurret.rotation * offset;
 
-        // La rotación vertical se mantiene igual
-        transform.localRotation = Quaternion.Euler(xRotation, tankTurret.eulerAngles.y, 0f);
+        Quaternion verticalRot = Quaternion.Euler(pitch, 0f, 0f);
+        Quaternion horizontalRot = Quaternion.Euler(0f, tankTurret.eulerAngles.y, 0f);
+        transform.rotation = horizontalRot * verticalRot;
     }
-
 }
