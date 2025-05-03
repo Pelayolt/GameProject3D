@@ -14894,22 +14894,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2034953555}
   m_SourcePrefab: {fileID: 100100000, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
---- !u!114 &414469644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149429340192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4d6a5b268d132f47af8103f00cf7e5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireTransform: {fileID: 1577597675}
-  cooldownTime: 0.5
-  rocketPool: {fileID: 791233698}
-  launchForce: 100
 --- !u!1001 &415806040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14966,6 +14950,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 371036451}
   m_SourcePrefab: {fileID: 100100000, guid: b82e76f4092b7d24aaeecddf36fe8d3b, type: 3}
+--- !u!1 &419847504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 419847505}
+  m_Layer: 11
+  m_Name: FirePointCannon3_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &419847505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419847504}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.27448958, y: 0.28049463, z: 1.993586}
+  m_LocalScale: {x: 1.4296335, y: 1.4296335, z: 1.4296335}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1305039126288615864}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &420069001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19749,6 +19764,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 284100655}
   m_SourcePrefab: {fileID: 100100000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
+--- !u!1 &535755977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 535755978}
+  m_Layer: 11
+  m_Name: FirePointCannon3_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &535755978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535755977}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.26019335, y: -0.23703268, z: 1.993586}
+  m_LocalScale: {x: 1.4296335, y: 1.4296335, z: 1.4296335}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1305039126288615864}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &536317079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35607,6 +35653,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0c7bcaa85c9494849bc7a0a18b7f3324, type: 3}
   m_PrefabInstance: {fileID: 1081125528}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &967245969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 967245970}
+  m_Layer: 11
+  m_Name: FirePointCannon3_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &967245970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967245969}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.26019335, y: 0.28049463, z: 1.993586}
+  m_LocalScale: {x: 1.4296335, y: 1.4296335, z: 1.4296335}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1305039126288615864}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &968982901 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
@@ -43512,7 +43589,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1170390317}
-  m_Layer: 6
+  - component: {fileID: 1170390318}
+  m_Layer: 11
   m_Name: TankFree_Cannon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43535,6 +43613,26 @@ Transform:
   - {fileID: 1305039126288615864}
   m_Father: {fileID: 980924456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1170390318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170390316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d6a5b268d132f47af8103f00cf7e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireTransform: {fileID: 0}
+  cooldownTime: 1
+  rocketPool: {fileID: 791233698}
+  launchForce: 60
+  fireTransform1: {fileID: 967245970}
+  fireTransform2: {fileID: 419847505}
+  fireTransform3: {fileID: 1856445799}
+  fireTransform4: {fileID: 535755978}
 --- !u!1001 &1170756287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71102,6 +71200,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2509cc5763ca17f4598bf61fd585a93e, type: 3}
   m_PrefabInstance: {fileID: 962593725}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1856445798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1856445799}
+  m_Layer: 11
+  m_Name: FirePointCannon3_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1856445799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856445798}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.27448958, y: -0.23703268, z: 1.993586}
+  m_LocalScale: {x: 1.4296335, y: 1.4296335, z: 1.4296335}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1305039126288615864}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1857317864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83430,7 +83559,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450653432795802}
-  - component: {fileID: 414469644}
   m_Layer: 11
   m_Name: TankFree_Canon2
   m_TagString: Untagged
@@ -83468,7 +83596,11 @@ Transform:
   m_LocalPosition: {x: 0.014999986, y: -0.02910012, z: 0.6477633}
   m_LocalScale: {x: 0.34974, y: 0.34974, z: 0.34974}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 967245970}
+  - {fileID: 419847505}
+  - {fileID: 1856445799}
+  - {fileID: 535755978}
   m_Father: {fileID: 1170390317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1890953491032524677
@@ -83921,7 +84053,7 @@ GameObject:
   - component: {fileID: 1305039126288615864}
   - component: {fileID: 5405563970018616733}
   - component: {fileID: 5005701436942620064}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SuperWeapon2Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
