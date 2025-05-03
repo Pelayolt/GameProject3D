@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -87,9 +88,16 @@ public class PlayerMovement : MonoBehaviour
             forceDirection.y = 0.1f;
             otherRb.AddForce(forceDirection.normalized * 3f, ForceMode.Impulse);
 
-            // Cambiar la capa solo si sigue colisionando con el suelo
-            collision.gameObject.layer = LayerMask.NameToLayer("NoCollide");
+            // Iniciar corrutina para cambiar de capa después de 2 segundos
+            StartCoroutine(ChangeLayerAfterDelay(collision.gameObject, 2f));
         }
     }
+
+    private IEnumerator ChangeLayerAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        obj.layer = LayerMask.NameToLayer("NoCollide");
+    }
+
 
 }
