@@ -38,6 +38,11 @@ public class TankShooting : MonoBehaviour
         {
             EquipWeapon(2); // Equipa la segunda arma
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            EquipWeapon(3); // Equipa el tercer arma
+        }
     }
 
     void EquipWeapon(int index)
