@@ -17,8 +17,9 @@ public class FollowFirstPerson : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
-        offset = Quaternion.Inverse(tankTurret.rotation) * (transform.position - tankTurret.position);
+        offset = transform.position - tankTurret.position;
     }
+
 
     void OnEnable()
     {
