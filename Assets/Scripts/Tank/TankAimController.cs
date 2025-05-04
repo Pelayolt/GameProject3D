@@ -35,8 +35,9 @@ public class TankAimController : MonoBehaviour
     public void HandleThirdPersonAim()
     {
         Ray ray = thirdPersonCamera.ScreenPointToRay(Input.mousePosition);
+        int layerMask = ~(1 << LayerMask.NameToLayer("IgnoreMainCamera"));
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000f))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000f, layerMask, QueryTriggerInteraction.Ignore))
         {
             Vector3 targetPoint = hitInfo.point;
 
