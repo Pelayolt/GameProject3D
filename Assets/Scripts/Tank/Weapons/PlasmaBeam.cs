@@ -30,23 +30,19 @@ public class PlasmaBeam : TankWeapon
         // Parámetros
         Vector3 start = fireTransform.position;
         Vector3 direction = fireTransform.forward;
-        float maxDistance = 30f;
+        float maxDistance = 1000f;
 
         RaycastHit hit;
         Vector3 endPoint;
 
         // Raycast: choca con algo o se extiende hasta maxDistance
-        if (Physics.Raycast(start, direction, out hit, maxDistance, hitLayers))
-        {
-            endPoint = hit.point;
+        Physics.Raycast(start, direction, out hit, maxDistance, hitLayers);
+        
+        endPoint = hit.point;
 
             // Opcional: aplicar daño si tiene componente
             // hit.collider.GetComponent<Enemy>()?.TakeDamage(damage);
-        }
-        else
-        {
-            endPoint = start + direction * maxDistance;
-        }
+    
 
         // Calcular dirección y longitud
         Vector3 dirToTarget = endPoint - start;
