@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveTank()
     {
+        if(Time.deltaTime == 0)
+            return;
         float turn = horizontalInput * turnSpeed * moveSpeed * Time.deltaTime;
 
         Vector3 move = transform.forward * verticalInput * moveSpeed;

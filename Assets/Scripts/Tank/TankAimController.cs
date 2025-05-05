@@ -20,6 +20,8 @@ public class TankAimController : MonoBehaviour
 
     public void HandleFirstPersonAim()
     {
+        if(Time.deltaTime == 0)
+            return;
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 

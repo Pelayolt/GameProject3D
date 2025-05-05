@@ -15,6 +15,8 @@ public class TankShooting : MonoBehaviour
 
     void Update()
     {
+        if(Time.deltaTime == 0)
+            return;
         if (Input.GetButtonDown("Fire1") && equippedWeapon != null)
         {
             bool fired = equippedWeapon.Fire();

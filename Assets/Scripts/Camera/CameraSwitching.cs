@@ -18,6 +18,8 @@ public class CameraSwitcher : MonoBehaviour
 
     void Update()
     {
+        if(Time.deltaTime == 0)
+            return;
         if (Input.GetMouseButtonDown(1))
         {
             SetFirstPerson(!isFirstPerson);

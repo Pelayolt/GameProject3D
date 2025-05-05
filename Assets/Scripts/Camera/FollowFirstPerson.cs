@@ -41,6 +41,8 @@ public class FollowFirstPerson : MonoBehaviour
 
     void Update()
     {
+        if(Time.deltaTime == 0)
+            return;
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         tankTurret.Rotate(Vector3.up * mouseX);
     }
