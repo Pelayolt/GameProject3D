@@ -37,11 +37,5 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f; // Detiene el tiempo
         isPaused = true;
     }
-
-    public void QuitGame()
-    {
-        // Esto funciona en build, no en el editor
-        Application.Quit();
-    }
     
 }
