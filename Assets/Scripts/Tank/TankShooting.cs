@@ -3,9 +3,7 @@ using UnityEngine;
 public class TankShooting : MonoBehaviour
 {
     public Transform gun; // Objeto vacío que contiene las armas
-    public AudioSource audioSource;
-    public AudioClip fireClip;
-
+ 
     public TankWeapon equippedWeapon;
 
     void Start()
@@ -19,11 +17,7 @@ public class TankShooting : MonoBehaviour
             return;
         if (Input.GetButtonDown("Fire1") && equippedWeapon != null)
         {
-            bool fired = equippedWeapon.Fire();
-            if (fired && audioSource != null && fireClip != null)
-            {
-                audioSource.PlayOneShot(fireClip);
-            }
+            equippedWeapon.Fire();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))

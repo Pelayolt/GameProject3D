@@ -21,39 +21,59 @@ public class RocketLife : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic; //Para detectar bien las colisiones
     }
 
-    private void OnEnable()
-    {
-        hasCollided = false; // Reseteamos al reutilizar del pool
-        CancelInvoke();
-        Invoke(nameof(DisableRocket), lifetime);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (hasCollided) return; // Evitar múltiples impactos
+        if (hasCollided) return;
         hasCollided = true;
 
         if (explosionPrefab != null)
         {
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(explosion, 2f); // Dejar la explosión un poco más tiempo
+            Destroy(explosion, 2f);
         }
-
-        // Explode();
 
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = true; // Congelar
+            rb.isKinematic = true;
         }
+
+        SetVisualsActive(false);
 
         if (audioSource != null && impactClip != null)
         {
-            audioSource.PlayOneShot(impactClip);
+            audioSource.PlayOneShot(impactClip, 0.20f);
         }
 
-        Invoke(nameof(DisableRocket), 0.7f); // Un poco más de tiempo que la bala
+        Invoke(nameof(DisableRocket), 3f);
+    }
+
+    private void OnEnable()
+    {
+        hasCollided = false;
+        CancelInvoke();
+        Invoke(nameof(DisableRocket), lifetime);
+
+        SetVisualsActive(true);
+
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
+    }
+
+    private void SetVisualsActive(bool isActive)
+    {
+        // Desactiva todos los renderers y particle systems
+        foreach (var renderer in GetComponentsInChildren<Renderer>())
+            renderer.enabled = isActive;
+
+        foreach (var ps in GetComponentsInChildren<ParticleSystem>())
+        {
+            if (isActive) ps.Play();
+            else ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
     }
 
     private void DisableRocket()
@@ -64,20 +84,4 @@ public class RocketLife : MonoBehaviour
         }
         gameObject.SetActive(false);
     }
-
-    // private void Explode()
-    // {
-    //     Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
-
-    //     foreach (Collider nearbyObject in colliders)
-    //     {
-    //         // Comprobar si puede recibir daño
-    //         Health targetHealth = nearbyObject.GetComponent<Health>();
-
-    //         if (targetHealth != null)
-    //         {
-    //             targetHealth.TakeDamage(explosionDamage);
-    //         }
-    //     }
-    // }
 }

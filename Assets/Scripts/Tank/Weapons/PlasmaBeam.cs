@@ -4,23 +4,29 @@ using UnityEngine;
 public class PlasmaBeam : TankWeapon
 {
     public GameObject laserEffect;       // Prefab del láser (de FX Lightning II)
-    public float laserDuration = 0.5f;   // Tiempo visible del láser
-    public GameObject laserEffect2; 
-
+    public float laserDuration = 3f;   // Tiempo visible del láser
+    public override float cooldownTime => 4f;
+    public GameObject laserEffect2;
+    public AudioSource audioSource;
+    public AudioClip fireClip;
     private bool isFiring = false;
 
     public LayerMask hitLayers;
 
-    public override bool Fire()
+    public override void Fire()
     {
-        if (!CanFire()) return false;
+        if (!CanFire()) return;
+
+        if (audioSource != null && fireClip != null)
+        {
+            audioSource.PlayOneShot(fireClip, 0.20f);
+        }
 
         if (!isFiring)
         {
             StartCoroutine(FireLaser());
+            cooldownTimer = 0f; // Reinicia el cooldown al disparar
         }
-
-        return true;
     }
 
     private IEnumerator FireLaser()

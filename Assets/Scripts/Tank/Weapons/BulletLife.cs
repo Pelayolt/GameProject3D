@@ -18,42 +18,60 @@ public class BulletLife : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic; //Para detectar bien las colisiones
     }
 
-
-    private void OnEnable()
-    {
-        hasCollided = false; // Reset al reutilizar del pool
-        CancelInvoke();
-        Invoke(nameof(DisableBullet), lifetime);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (hasCollided) return; // Evitar múltiples colisiones
+        if (hasCollided) return;
         hasCollided = true;
 
-        // 🔥 1. Crear explosión si hay
         if (explosionPrefab != null)
         {
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(explosion, 1f);
+            Destroy(explosion, 2f);
         }
 
-        // 🔥 2. Quitar la física para que no rebote
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = true; // Lo congelamos
+            rb.isKinematic = true;
         }
 
-        // 🔥 3. Reproducir sonido de impacto
+        SetVisualsActive(false);
+
         if (audioSource != null && impactClip != null)
         {
-            audioSource.PlayOneShot(impactClip);
+            audioSource.PlayOneShot(impactClip, 0.20f);
         }
 
-        // 🔥 4. Desactivar la bala después de un corto tiempo
-        Invoke(nameof(DisableBullet), 0.5f); // Un poco de tiempo para que suene
+        Invoke(nameof(DisableBullet), 3f);
+    }
+
+
+    private void OnEnable()
+    {
+        hasCollided = false;
+        CancelInvoke();
+        Invoke(nameof(DisableBullet), lifetime);
+
+        SetVisualsActive(true);
+
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
+    }
+
+    private void SetVisualsActive(bool isActive)
+    {
+        // Desactiva todos los renderers y particle systems
+        foreach (var renderer in GetComponentsInChildren<Renderer>())
+            renderer.enabled = isActive;
+
+        foreach (var ps in GetComponentsInChildren<ParticleSystem>())
+        {
+            if (isActive) ps.Play();
+            else ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
     }
 
     private void DisableBullet()

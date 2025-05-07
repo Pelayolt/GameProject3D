@@ -6,23 +6,29 @@ public class RocketLauncher : TankWeapon
 {
     public ProjectilePool rocketPool;
     public float launchForce = 100f;
+    public AudioSource audioSource;
+    public AudioClip fireClip;
     public Transform fireTransform1;
     public Transform fireTransform2;
     public Transform fireTransform3;
     public Transform fireTransform4;
 
-    public override bool Fire()
+    public override void Fire()
     {
-        if (!CanFire()) return false;
+        if (!CanFire()) return;
+
+        if (audioSource != null && fireClip != null)
+        {
+            audioSource.PlayOneShot(fireClip, 0.20f);
+        }
 
         List<Rigidbody> rockets = rocketPool.GetProjectiles(4);
-        if (rockets == null) return false;
+        if (rockets == null) return;
 
         Transform[] fireTransforms = new Transform[] { fireTransform1, fireTransform2, fireTransform3, fireTransform4 };
 
         StartCoroutine(FireRocketsSequentially(rockets, fireTransforms));
         cooldownTimer = 0f;
-        return true;
     }
 
     private IEnumerator FireRocketsSequentially(List<Rigidbody> rockets, Transform[] fireTransforms)

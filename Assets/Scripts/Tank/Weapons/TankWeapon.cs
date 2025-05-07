@@ -3,10 +3,15 @@ using UnityEngine;
 public abstract class TankWeapon : MonoBehaviour
 {
     public Transform fireTransform;
-    public float cooldownTime = 1f;
-    protected float cooldownTimer = 0f;
+    public virtual float cooldownTime => 1f;
+    protected float cooldownTimer;
 
-    public abstract bool Fire();
+    protected virtual void OnEnable()
+    {
+        cooldownTimer = cooldownTime;
+    }
+
+    public abstract void Fire();
 
     protected virtual void Update()
     {
