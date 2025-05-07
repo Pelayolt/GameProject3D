@@ -41,7 +41,7 @@ public class TankShooting : MonoBehaviour
         }
     }
 
-    void EquipWeapon(int index)
+    public void EquipWeapon(int index)
     {
         // Desactiva todas las armas
         for (int i = 0; i < gun.childCount; i++)
