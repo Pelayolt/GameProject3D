@@ -30,7 +30,8 @@ public class AIControl : MonoBehaviour
     bool m_IsPatrol;
     bool m_PlayerInShootingRange;
 
-    public TankShooting tankShooting;
+    public TankWeapon equippedWeapon;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -69,6 +70,15 @@ public class AIControl : MonoBehaviour
     {
         m_PlayerNear = false;
         playerLastPosition = Vector3.zero;
+       
+       // if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
+        //{
+        //    m_PlayerInShootingRange = true;
+        //}
+        //else
+        //{
+          //  m_PlayerInShootingRange = false;
+       // }
 
         if(!m_PlayerInShootingRange)
         {
@@ -76,7 +86,7 @@ public class AIControl : MonoBehaviour
             navMeshAgent.SetDestination(m_PlayerPosition);
         }
         else{
-
+            equippedWeapon.Fire();
         }
         if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {

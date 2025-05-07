@@ -18,7 +18,7 @@ public class Flamethrower : TankWeapon
         {
             audioSource.clip = fireClip;
             audioSource.loop = true;
-            audioSource.volume = 0.2f; // Aquí bajas el volumen
+            audioSource.volume = 0.2f; // Aquï¿½ bajas el volumen
         }
     }
 
@@ -29,7 +29,6 @@ public class Flamethrower : TankWeapon
         if (!isFiring)
         {
             flameEffect.Play();
-            flameDamage.SetActive(true);
             isFiring = true;
 
             if (audioSource != null && fireClip != null)
@@ -46,7 +45,6 @@ public class Flamethrower : TankWeapon
         if (isFiring && !Input.GetButton("Fire1"))
         {
             flameEffect.Stop();
-            flameDamage.SetActive(false);
             isFiring = false;
 
             if (audioSource != null && audioSource.isPlaying)
