@@ -29785,9 +29785,6 @@ PrefabInstance:
       addedObject: {fileID: 1308962743}
     - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1308962742}
-    - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1308962747}
     - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
       insertIndex: -1
@@ -49134,26 +49131,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
   m_PrefabInstance: {fileID: 807895286}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1308962742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1308962735}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbf9c1e93550b5488cba79790d230ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 10
-  rotationSpeed: 360
-  moveSpeed: 10
-  player: {fileID: 3354916977055338097}
-  enemy_turret: {fileID: 1521463481}
-  tankShooting: {fileID: 1599714640}
-  turretRotationSpeed: 5
-  shootingRange: 10
 --- !u!114 &1308962743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49176,7 +49153,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 968982908}
   - {fileID: 1222568311}
-  tankShooting: {fileID: 0}
+  equippedWeapon: {fileID: 0}
 --- !u!195 &1308962747
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -58215,11 +58192,6 @@ MeshCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3667b1c4d7f532647b9156782c0c80f0, type: 3}
   m_PrefabInstance: {fileID: 1387099514}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1521463481 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2457601262040078919, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
-  m_PrefabInstance: {fileID: 807895286}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1522469610 stripped
 GameObject:
