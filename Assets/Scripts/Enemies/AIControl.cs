@@ -9,7 +9,7 @@ public class AIControl : MonoBehaviour
     
     float moveSpeed = 8f;
 
-    float viewRadius = 15f;
+    float viewRadius = 30f;
     float viewAngle = 90;
     public LayerMask playerMask;
     public LayerMask obstacleMask;
@@ -29,6 +29,8 @@ public class AIControl : MonoBehaviour
     bool m_PlayerNear;
     bool m_IsPatrol;
     bool m_PlayerInShootingRange;
+
+    public TankShooting tankShooting;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -73,11 +75,15 @@ public class AIControl : MonoBehaviour
             Move();
             navMeshAgent.SetDestination(m_PlayerPosition);
         }
+        else{
+
+        }
         if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
             if(m_WaitTime <= 0 && !m_PlayerInShootingRange && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
             {
                 m_IsPatrol = true;
+                navMeshAgent.stoppingDistance = 15;
                 m_PlayerNear = false;
                 Move();
                 m_TimeToRotate = timeToRotate;
@@ -189,6 +195,7 @@ public class AIControl : MonoBehaviour
                 {
                     m_PlayerInChaseRange = true;
                     m_IsPatrol = false;
+                    navMeshAgent.stoppingDistance = 30;
                 }
                 else{
                     m_PlayerInChaseRange = false; 
