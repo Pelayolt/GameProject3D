@@ -51,7 +51,6 @@ public class PlasmaBeam : TankWeapon
         // Mostrar y alinear el láser visualmente
         laserEffect.SetActive(true);
         laserEffect.transform.position = start + laserEffect.transform.up * (length / 2f);
-        laserEffect.transform.rotation = Quaternion.LookRotation(dirToTarget) * Quaternion.Euler(90f, 0f, 0f);
         laserEffect.transform.localScale = new Vector3(1f, length, 1f); // ← se alarga solo lo necesario
 
         laserEffect2.SetActive(true);
