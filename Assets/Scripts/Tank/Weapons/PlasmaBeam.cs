@@ -13,6 +13,15 @@ public class PlasmaBeam : TankWeapon
 
     public LayerMask hitLayers;
 
+    void OnEnable()
+    {
+        if (audioSource != null)
+        {
+            audioSource.clip = fireClip;
+            audioSource.Stop();
+        }
+    }
+
     public override void Fire()
     {
         if (!CanFire()) return;

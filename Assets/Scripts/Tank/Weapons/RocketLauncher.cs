@@ -13,6 +13,15 @@ public class RocketLauncher : TankWeapon
     public Transform fireTransform3;
     public Transform fireTransform4;
 
+    void OnEnable()
+    {
+        if (audioSource != null)
+        {
+            audioSource.clip = fireClip;
+            audioSource.Stop();
+        }
+    }
+
     public override void Fire()
     {
         if (!CanFire()) return;

@@ -3,22 +3,22 @@ using UnityEngine;
 public class Flamethrower : TankWeapon
 {
     public ParticleSystem flameEffect;
-    public FlameDamage flameDamage;
     public AudioSource audioSource;
     public AudioClip fireClip;
 
     private bool isFiring = false;
 
-    void Start()
+    void OnEnable()
     {
         flameEffect.Stop();
-        flameDamage.SetActive(false);
+        isFiring = false;
 
         if (audioSource != null)
         {
             audioSource.clip = fireClip;
             audioSource.loop = true;
-            audioSource.volume = 0.2f; // Aqu� bajas el volumen
+            audioSource.volume = 0.2f;
+            audioSource.Stop();
         }
     }
 

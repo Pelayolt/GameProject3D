@@ -51,6 +51,8 @@ public class RocketLife : MonoBehaviour
 
     private void OnEnable()
     {
+        audioSource.Stop();
+
         hasCollided = false;
         CancelInvoke();
         Invoke(nameof(DisableRocket), lifetime);

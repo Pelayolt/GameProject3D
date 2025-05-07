@@ -7,6 +7,15 @@ public class TankCannon : TankWeapon
     public AudioClip fireClip;
     public float launchForce = 20f;
 
+    void OnEnable()
+    {
+        if (audioSource != null)
+        {
+            audioSource.clip = fireClip;
+            audioSource.Stop();
+        }
+    }
+
     public override void Fire()
     {
         if (!CanFire()) return;

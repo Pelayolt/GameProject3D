@@ -10,17 +10,20 @@ public class BulletLife : MonoBehaviour
 
     private Rigidbody rb;
     private bool hasCollided = false;
+    private bool canCollide = false;
+
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
         rb = GetComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic; //Para detectar bien las colisiones
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (hasCollided) return;
+        if (!canCollide || hasCollided) return;
         hasCollided = true;
 
         if (explosionPrefab != null)
@@ -50,8 +53,8 @@ public class BulletLife : MonoBehaviour
     private void OnEnable()
     {
         hasCollided = false;
+        canCollide = false;
         CancelInvoke();
-        Invoke(nameof(DisableBullet), lifetime);
 
         SetVisualsActive(true);
 
@@ -59,6 +62,14 @@ public class BulletLife : MonoBehaviour
         {
             rb.isKinematic = false;
         }
+
+        Invoke(nameof(EnableCollision), 0.05f);
+        Invoke(nameof(DisableBullet), lifetime);
+    }
+
+    private void EnableCollision()
+    {
+        canCollide = true;
     }
 
     private void SetVisualsActive(bool isActive)

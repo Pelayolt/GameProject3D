@@ -27090,7 +27090,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 1946501658}
   flameEffect: {fileID: 1144901682}
-  flameDamage: {fileID: 883214470}
   audioSource: {fileID: 680197829}
   fireClip: {fileID: 8300000, guid: 5aadc4dc07dd8c0448550fc57a19a72c, type: 3}
 --- !u!23 &680197831
@@ -34560,7 +34559,6 @@ GameObject:
   m_Component:
   - component: {fileID: 883214469}
   - component: {fileID: 883214471}
-  - component: {fileID: 883214470}
   m_Layer: 12
   m_Name: FlameArea
   m_TagString: Untagged
@@ -34583,22 +34581,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 680197828}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &883214470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883214468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba38dd08b0f9a2479cb6cba8d1ac98d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePerSecond: 10
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!65 &883214471
 BoxCollider:
   m_ObjectHideFlags: 0
