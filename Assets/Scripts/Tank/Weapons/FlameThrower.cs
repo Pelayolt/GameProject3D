@@ -3,7 +3,6 @@ using UnityEngine;
 public class Flamethrower : TankWeapon
 {
     public ParticleSystem flameEffect;
-    public FlameDamage flameDamage;
 
     private bool isFiring = false;
 
@@ -14,7 +13,6 @@ public class Flamethrower : TankWeapon
         if (!isFiring)
         {
             flameEffect.Play();
-            flameDamage.SetActive(true);
             isFiring = true;
         }
 
@@ -29,7 +27,6 @@ public class Flamethrower : TankWeapon
         if (isFiring && !Input.GetButton("Fire1"))
         {
             flameEffect.Stop();
-            flameDamage.SetActive(false);
             isFiring = false;
         }
     }
