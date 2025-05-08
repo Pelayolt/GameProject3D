@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 3997e2241185407d80309a82f9148466
-ShaderImporter:
+guid: 50298d278b8365544936a7d253c36fb9
+NativeFormatImporter:
   externalObjects: {}
-  defaultTextures: []
-  nonModifiableTextures: []
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
@@ -12,5 +11,5 @@ AssetOrigin:
   productId: 275780
   packageName: Free Healing Item (including C# Script)
   packageVersion: 1.0
-  assetPath: Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc
+  assetPath: Assets/ViapixGames/HealingItem/Materials/Green.mat
   uploadId: 644048

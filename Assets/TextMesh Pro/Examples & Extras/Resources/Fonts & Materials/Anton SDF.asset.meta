@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 3997e2241185407d80309a82f9148466
-ShaderImporter:
-  externalObjects: {}
-  defaultTextures: []
-  nonModifiableTextures: []
+guid: 8a89fa14b10d46a99122fd4f73fca9a2
+timeCreated: 1484172732
+licenseType: Store
+NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
@@ -12,5 +11,6 @@ AssetOrigin:
   productId: 275780
   packageName: Free Healing Item (including C# Script)
   packageVersion: 1.0
-  assetPath: Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc
+  assetPath: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton
+    SDF.asset
   uploadId: 644048
