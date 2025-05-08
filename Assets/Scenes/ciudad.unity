@@ -9169,6 +9169,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 230160220}
+    - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 292318977}
   m_SourcePrefab: {fileID: 100100000, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
 --- !u!1 &230160217 stripped
 GameObject:
@@ -9534,7 +9537,7 @@ GameObject:
   - component: {fileID: 240357991}
   - component: {fileID: 240357990}
   - component: {fileID: 240357989}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9681,7 +9684,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   impactClip: {fileID: 8300000, guid: 07d86f38d24ec394398898718fd5e4fb, type: 3}
   explosionRadius: 5
-  explosionDamage: 50
+  explosionDamage: 10
 --- !u!135 &240357991
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11918,6 +11921,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!23 &292318976 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6530804518502666957, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 230160216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &292318977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230160217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd7bfb46672b9847b656d301d7a6ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  deathVFX: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+  renderers:
+  - {fileID: 292318976}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
 --- !u!1 &293205675 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 800befcc62026a34693972077c91698d, type: 3}
@@ -53862,7 +53888,7 @@ GameObject:
   - component: {fileID: 1248771430}
   - component: {fileID: 1248771429}
   - component: {fileID: 1248771428}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Bala
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54008,6 +54034,7 @@ MonoBehaviour:
   lifetime: 5
   explosionPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
   impactClip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
+  damage: 10
 --- !u!135 &1248771430
 SphereCollider:
   m_ObjectHideFlags: 0
