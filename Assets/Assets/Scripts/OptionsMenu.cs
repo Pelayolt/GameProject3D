@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class OptionsMenu : MonoBehaviour
     public GameObject closeButton;
     public GameObject exitButton;
     public GameObject controlsPopup;
+
+    public AudioMixer mixer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Awake()
@@ -24,6 +27,18 @@ public class OptionsMenu : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetMasterVolume(float value){
+        mixer.SetFloat("MasterVol", Mathf.Log10(value) * 20);
+    }
+
+    public void SetMusicVolume(float value){
+        mixer.SetFloat("MusicVol", Mathf.Log10(value) * 20);
+    }
+
+    public void SetEffectsVolume(float value){
+        mixer.SetFloat("SFXVol", Mathf.Log10(value) * 20);
     }
 
     public void TitleMode()
