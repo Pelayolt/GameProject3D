@@ -20,6 +20,10 @@ public class PlasmaBeam : TankWeapon
             audioSource.clip = fireClip;
             audioSource.Stop();
         }
+        laserEffect.SetActive(false);
+        laserEffect2.SetActive(false);
+        cooldownTimer = cooldownTime;
+        isFiring = false;
     }
 
     public override void Fire()

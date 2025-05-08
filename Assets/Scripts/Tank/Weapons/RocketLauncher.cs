@@ -20,6 +20,8 @@ public class RocketLauncher : TankWeapon
             audioSource.clip = fireClip;
             audioSource.Stop();
         }
+        cooldownTimer = cooldownTime;
+
     }
 
     public override void Fire()

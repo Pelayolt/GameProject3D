@@ -10,6 +10,7 @@ public class FollowFirstPerson : MonoBehaviour
 
     [Header("Settings")]
     public float mouseSensitivity = 2f;
+    private bool paused = false;
 
     private Vector3 offset;
     private Camera cam;
@@ -20,8 +21,7 @@ public class FollowFirstPerson : MonoBehaviour
         offset = transform.position - tankTurret.position;
     }
 
-
-    void OnEnable()
+    void BlockMouse()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -30,7 +30,7 @@ public class FollowFirstPerson : MonoBehaviour
             uiCrosshair.SetActive(true);
     }
 
-    void OnDisable()
+    void UnblockMouse()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -39,12 +39,33 @@ public class FollowFirstPerson : MonoBehaviour
             uiCrosshair.SetActive(false);
     }
 
+
+    void OnEnable()
+    {
+        BlockMouse();
+    }
+
+    void OnDisable()
+    {
+        UnblockMouse();
+    }
+
     void Update()
     {
         if(Time.deltaTime == 0)
-            return;
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        tankTurret.Rotate(Vector3.up * mouseX);
+        {
+            UnblockMouse();
+            paused = true;
+        }else{
+            if(paused)
+            {
+                BlockMouse();
+                paused = false;
+            }
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            tankTurret.Rotate(Vector3.up * mouseX);
+        }
+        
     }
 
     void LateUpdate()

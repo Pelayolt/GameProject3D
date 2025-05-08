@@ -5,6 +5,8 @@ public class Flamethrower : TankWeapon
     public ParticleSystem flameEffect;
     public AudioSource audioSource;
     public AudioClip fireClip;
+    public override float cooldownTime => 0f;
+
 
     private bool isFiring = false;
 
@@ -12,6 +14,7 @@ public class Flamethrower : TankWeapon
     {
         flameEffect.Stop();
         isFiring = false;
+        cooldownTimer = cooldownTime;
 
         if (audioSource != null)
         {
