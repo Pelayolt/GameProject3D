@@ -11,6 +11,7 @@ public class BulletLife : MonoBehaviour
     private Rigidbody rb;
     private bool hasCollided = false;
     private bool canCollide = false;
+    public float damage = 10f;
 
 
     private void Awake()
@@ -25,6 +26,14 @@ public class BulletLife : MonoBehaviour
     {
         if (!canCollide || hasCollided) return;
         hasCollided = true;
+
+        Debug.Log("Colision con: " + collision.collider.name);
+        IDamageable dmg = collision.collider.GetComponentInParent<IDamageable>();
+        if (dmg != null)
+        {
+            dmg.TakeDamage(damage);
+            Debug.Log("Daño por golpeo con: " + collision.collider.name);
+        }
 
         if (explosionPrefab != null)
         {
