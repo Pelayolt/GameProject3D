@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class OptionsMenu : MonoBehaviour
@@ -8,6 +9,12 @@ public class OptionsMenu : MonoBehaviour
     public GameObject closeButton;
     public GameObject exitButton;
     public GameObject controlsPopup;
+
+    private float volMusic;
+    private float volSfx;
+
+    public Slider musicSlider;
+    public Slider sfxSlider;
 
     public AudioMixer mixer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,6 +46,51 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetEffectsVolume(float value){
         mixer.SetFloat("SFXVol", Mathf.Log10(value) * 20);
+    }
+
+    public void SetResolution(int width, int height){
+        Screen.SetResolution(width, height, Screen.fullScreen);
+    }
+
+    public void ToggleMuteMusic(bool mute){
+        float vol;
+        if(mute){
+            if (mixer.GetFloat("MusicVol", out vol))
+                volMusic = vol;
+            mixer.SetFloat("MusicVol", -80);
+            musicSlider.interactable = false;
+        }else{
+            mixer.SetFloat("MusicVol", volMusic);
+            musicSlider.interactable = true;
+        }
+    }
+
+    public void ToggleMuteSfx(bool mute){
+        float vol;
+        if(mute){
+            if (mixer.GetFloat("SFXVol", out vol))
+                volSfx = vol;
+            mixer.SetFloat("SFXVol", -80);
+            sfxSlider.interactable = false;
+        }else{
+            mixer.SetFloat("SFXVol", volSfx);
+            sfxSlider.interactable = true;
+        }
+    }
+
+    public void ResolutionOptionSelected(int op){
+        if (op == 0){
+            SetResolution(1920, 1080);
+        }else if(op == 1){
+            SetResolution(960, 540);
+        }else if(op == 2){
+            SetResolution(2880, 1620);
+        }
+    }
+
+    public void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
     }
 
     public void TitleMode()
