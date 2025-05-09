@@ -36,13 +36,13 @@ public class FollowFirstPerson : MonoBehaviour
     void OnEnable()
     {
         BlockMouse();
-        SetGunTransparency(0.4f); // Transparencia alta al activar
+        SetGunTransparency(true); // Transparencia alta al activar
     }
 
     void OnDisable()
     {
         UnblockMouse();
-        SetGunTransparency(1f);   // Totalmente opaco al desactivar
+        SetGunTransparency(false);   // Totalmente opaco al desactivar
     }
 
     void Update()
@@ -75,57 +75,46 @@ public class FollowFirstPerson : MonoBehaviour
         transform.rotation = horizontalRot * verticalRot;
     }
 
-    void SetGunTransparency(float alpha)
+    void SetGunTransparency(bool enableTransparent)
     {
         if (tankGun == null) return;
 
         foreach (Transform weapon in tankGun)
         {
             bool wasInactive = !weapon.gameObject.activeSelf;
-
-            // Activamos temporalmente si estaba inactiva
             if (wasInactive)
-                weapon.gameObject.SetActive(true);
+                weapon.gameObject.SetActive(true); // Activar temporalmente
 
             Renderer renderer = weapon.GetComponent<Renderer>();
             if (renderer != null)
             {
-                foreach (Material mat in renderer.materials)
+                Material[] mats = renderer.sharedMaterials;
+                Material[] newMats = new Material[mats.Length];
+
+                for (int i = 0; i < mats.Length; i++)
                 {
-                    if (!mat.HasProperty("_Color")) continue;
+                    string baseName = mats[i].name.Replace(" (Instance)", ""); // Quitar sufijo de instancia
+                    string targetName = enableTransparent ? baseName + "_Transparent" : baseName.Replace("_Transparent", "");
 
-                    Color color = mat.color;
-                    color.a = alpha;
-                    mat.color = color;
-
-                    if (alpha < 1f)
+                    // Cargar material desde Resources (debe estar en carpeta "Resources")
+                    Material newMat = Resources.Load<Material>("Materials/" + targetName);
+                    if (newMat != null)
                     {
-                        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                        mat.SetInt("_ZWrite", 0);
-                        mat.DisableKeyword("_ALPHATEST_ON");
-                        mat.EnableKeyword("_ALPHABLEND_ON");
-                        mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                        mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+                        newMats[i] = newMat;
                     }
                     else
                     {
-                        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-                        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-                        mat.SetInt("_ZWrite", 1);
-                        mat.DisableKeyword("_ALPHATEST_ON");
-                        mat.DisableKeyword("_ALPHABLEND_ON");
-                        mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                        mat.renderQueue = -1;
+                        Debug.LogWarning($"Material '{targetName}' no encontrado en Resources.");
+                        newMats[i] = mats[i]; // Fallback al actual
                     }
                 }
+
+                renderer.sharedMaterials = newMats;
             }
 
-            // Restaurar el estado de activación original
             if (wasInactive)
-                weapon.gameObject.SetActive(false);
+                weapon.gameObject.SetActive(false); // Restaurar estado
         }
     }
-
 
 }
