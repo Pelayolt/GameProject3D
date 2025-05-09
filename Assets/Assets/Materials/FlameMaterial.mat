@@ -23,7 +23,7 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - GRABPASS
-  m_LockedProperties: _EmissionColor _EmissionMap
+  m_LockedProperties: _Color _EmissionColor _EmissionMap _MainTex
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -99,7 +99,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.76226705, g: 0.93333334, b: 0.0039215405, a: 1}
+    - _Color: {r: 0.93333334, g: 0.8663367, b: 0.0039215405, a: 0.5019608}
     - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 0, b: 0, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}

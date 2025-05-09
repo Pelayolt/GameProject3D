@@ -47,7 +47,7 @@ public class FollowFirstPerson : MonoBehaviour
 
     void Update()
     {
-        if(Time.deltaTime == 0)
+        if (Time.timeScale == 0f)
         {
             UnblockMouse();
             paused = true;
@@ -87,8 +87,8 @@ public class FollowFirstPerson : MonoBehaviour
             if (wasInactive)
                 weapon.gameObject.SetActive(true);
 
-            Renderer[] renderers = weapon.GetComponentsInChildren<Renderer>(true); // true incluye inactivos
-            foreach (Renderer renderer in renderers)
+            Renderer renderer = weapon.GetComponent<Renderer>();
+            if (renderer != null)
             {
                 foreach (Material mat in renderer.materials)
                 {
@@ -121,10 +121,11 @@ public class FollowFirstPerson : MonoBehaviour
                 }
             }
 
-            // Si estaba inactiva antes, lo dejamos como estaba
+            // Restaurar el estado de activación original
             if (wasInactive)
                 weapon.gameObject.SetActive(false);
         }
     }
+
 
 }
