@@ -10,6 +10,12 @@ public class PlasmaBeam : TankWeapon
     public AudioSource audioSource;
     public AudioClip fireClip;
     private bool isFiring = false;
+    public float damagePerSecond = 50f;
+    public float maxDistance = 1000f;
+    private Vector3 laserStart;
+    private Vector3 laserEnd;
+    public GameObject impactAnimationPrefab;
+    private bool impactShown = false;
 
     public LayerMask hitLayers;
 
@@ -45,40 +51,66 @@ public class PlasmaBeam : TankWeapon
     private IEnumerator FireLaser()
     {
         isFiring = true;
+        impactShown = false;
 
-        // Parámetros
-        Vector3 start = fireTransform.position;
-        Vector3 direction = fireTransform.forward;
-        float maxDistance = 1000f;
+        UpdateLaser();
 
-        RaycastHit hit;
-        Vector3 endPoint;
-
-        // Raycast: choca con algo o se extiende hasta maxDistance
-        Physics.Raycast(start, direction, out hit, maxDistance, hitLayers);
-        
-        endPoint = hit.point;
-
-            // Opcional: aplicar daño si tiene componente
-            // hit.collider.GetComponent<Enemy>()?.TakeDamage(damage);
-    
-
-        // Calcular dirección y longitud
-        Vector3 dirToTarget = endPoint - start;
-        float length = dirToTarget.magnitude;
-
-        // Mostrar y alinear el láser visualmente
         laserEffect.SetActive(true);
-        laserEffect.transform.position = start + laserEffect.transform.up * (length / 2f);
-        laserEffect.transform.localScale = new Vector3(1f, length, 1f); // ← se alarga solo lo necesario
-
         laserEffect2.SetActive(true);
-        laserEffect2.transform.position = start + laserEffect2.transform.up * (length / 2f);
-        laserEffect2.transform.localScale = new Vector3(1f, length, 1f); // ← se alarga solo lo necesario
 
-        yield return new WaitForSeconds(laserDuration);
+        float timeElapsed = 0f;
+
+        while (timeElapsed < laserDuration)
+        {
+            UpdateLaser();
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
         laserEffect.SetActive(false);
         laserEffect2.SetActive(false);
         isFiring = false;
+    }
+
+    private void UpdateLaser()
+    {
+        laserStart = fireTransform.position;
+        Vector3 direction = fireTransform.forward;
+        laserEnd = laserStart + direction * maxDistance;
+
+        // Aplica daño continuo a todos los enemigos alcanzados
+        RaycastHit[] hits = Physics.RaycastAll(laserStart, direction, maxDistance, hitLayers);
+        foreach (RaycastHit hit in hits)
+        {
+            IDamageable dmg = hit.collider.GetComponentInParent<IDamageable>();
+            if (dmg != null)
+            {
+                float damage = damagePerSecond * Time.deltaTime;
+                dmg.TakeDamage(damage);
+            }
+
+            // Visualmente termina en el primer impacto
+            if (hit.distance < (laserEnd - laserStart).magnitude)
+            {
+                laserEnd = hit.point;
+            }
+
+            if (!impactShown && impactAnimationPrefab != null)
+            {
+                Instantiate(impactAnimationPrefab, hit.point, Quaternion.identity);
+                impactShown = true;
+            }
+            
+        }
+
+        // Visuales del láser
+        Vector3 dirToTarget = laserEnd - laserStart;
+        float length = dirToTarget.magnitude;
+
+        laserEffect.transform.position = laserStart + laserEffect.transform.up * (length / 2f);
+        laserEffect.transform.localScale = new Vector3(1f, length, 1f);
+
+        laserEffect2.transform.position = laserStart + laserEffect2.transform.up * (length / 2f);
+        laserEffect2.transform.localScale = new Vector3(1f, length, 1f);
     }
 }
