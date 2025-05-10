@@ -7,7 +7,7 @@ public class AIControl : MonoBehaviour
     float startWaitTime = 2;
     float timeToRotate = 2;
     
-    float moveSpeed = 8f;
+    float moveSpeed = 12f;
 
     float viewRadius = 30f;
     float viewAngle = 90;
@@ -29,6 +29,11 @@ public class AIControl : MonoBehaviour
     bool m_PlayerNear;
     bool m_IsPatrol;
     bool m_PlayerInShootingRange;
+
+    float patroling_distance = 0f;
+    float chase_distance = 15f;
+
+    float shootingDistance = 10f;
 
     public TankWeapon equippedWeapon;
 
@@ -68,46 +73,32 @@ public class AIControl : MonoBehaviour
 
     public void Chasing()
     {
-        m_PlayerNear = false;
-        playerLastPosition = Vector3.zero;
-       
-       // if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
-        //{
-        //    m_PlayerInShootingRange = true;
-        //}
-        //else
-        //{
-          //  m_PlayerInShootingRange = false;
-       // }
+        m_PlayerNear = false;       
+       float distToPlayer = Vector3.Distance(transform.position, m_PlayerPosition);
 
-        if(!m_PlayerInShootingRange)
+        if(m_PlayerInChaseRange)
         {
-            Move();
             navMeshAgent.SetDestination(m_PlayerPosition);
         }
-        else{
-            equippedWeapon.Fire();
+        else
+        {
+            navMeshAgent.SetDestination(playerLastPosition);
         }
+        Move();
+
         if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
-            if(m_WaitTime <= 0 && !m_PlayerInShootingRange && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
+            //equippedWeapon.Fire();
+            if(m_WaitTime <= 0 && !m_PlayerInShootingRange && distToPlayer >= 6f)
             {
                 m_IsPatrol = true;
-                navMeshAgent.stoppingDistance = 15;
+                navMeshAgent.stoppingDistance = patroling_distance;
                 m_PlayerNear = false;
                 Move();
                 m_TimeToRotate = timeToRotate;
                 m_WaitTime = startWaitTime;
                 navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
             
-            }
-            else
-            {
-                if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2.5f)
-                {
-                    Stop();
-                    m_WaitTime -= Time.deltaTime;
-                }
             }
         }
     }
@@ -130,8 +121,6 @@ public class AIControl : MonoBehaviour
         else
         {
             m_PlayerNear = false;
-            playerLastPosition = Vector3.zero;
-            navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
             if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
                 if(m_WaitTime <= 0)
@@ -149,10 +138,6 @@ public class AIControl : MonoBehaviour
         }
     }
 
-    void PlayerInShootingRange()
-    {
-        m_PlayerInShootingRange = true;
-    }
 
     void Move()
     {
@@ -205,7 +190,7 @@ public class AIControl : MonoBehaviour
                 {
                     m_PlayerInChaseRange = true;
                     m_IsPatrol = false;
-                    navMeshAgent.stoppingDistance = 30;
+                    navMeshAgent.stoppingDistance = chase_distance;
                 }
                 else{
                     m_PlayerInChaseRange = false; 
@@ -213,6 +198,7 @@ public class AIControl : MonoBehaviour
             }
         }
         if (m_PlayerInChaseRange){
+            playerLastPosition = m_PlayerPosition;
             m_PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         }
     }
