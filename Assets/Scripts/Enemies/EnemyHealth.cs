@@ -14,6 +14,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private Color[] originalColors;
 
+    public AIControl aiControl;
+
     void Awake()
     {
         currentHealth = maxHealth;
@@ -34,6 +36,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         currentHealth -= amount;
 
         FlashDamage(); // 👈 Parpadeo al recibir daño
+
+        ChasePlayer();
 
         if (currentHealth <= 0f)
         {
@@ -72,6 +76,20 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         for (int i = 0; i < renderers.Length; i++)
         {
             renderers[i].material.color = originalColors[i];
+        }
+    }
+
+    void ChasePlayer() //Chase player after being hit
+    {
+        aiControl.m_IsPatrol = false;
+        aiControl.m_PlayerInChaseRange = true;
+
+        // Update player position so the AI has a direction
+        Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        if (player != null)
+        {
+            aiControl.playerLastPosition = player.position;
+            aiControl.m_PlayerPosition = player.position;
         }
     }
 }

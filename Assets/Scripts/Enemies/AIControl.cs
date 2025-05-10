@@ -20,14 +20,14 @@ public class AIControl : MonoBehaviour
     public Transform[] waypoints;
     int m_CurrentWaypointIndex;
 
-    Vector3 playerLastPosition = Vector3.zero;
-    Vector3 m_PlayerPosition;
+    public Vector3 playerLastPosition = Vector3.zero;
+    public Vector3 m_PlayerPosition;
 
     float m_WaitTime;
     float m_TimeToRotate;
-    bool m_PlayerInChaseRange;
+    public bool m_PlayerInChaseRange;
     bool m_PlayerNear;
-    bool m_IsPatrol;
+    public bool m_IsPatrol;
     bool m_PlayerInShootingRange;
 
     float patroling_distance = 0f;

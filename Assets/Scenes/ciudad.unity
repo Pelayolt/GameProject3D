@@ -62950,6 +62950,7 @@ MonoBehaviour:
   - {fileID: 1418616206}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
+  aiControl: {fileID: 1418616212}
 --- !u!65 &1418616208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -63017,6 +63018,10 @@ MonoBehaviour:
   - {fileID: 1261524829}
   - {fileID: 873810191}
   - {fileID: 2058662168}
+  playerLastPosition: {x: 0, y: 0, z: 0}
+  m_PlayerPosition: {x: 0, y: 0, z: 0}
+  m_PlayerInChaseRange: 0
+  m_IsPatrol: 0
   equippedWeapon: {fileID: 0}
   wheels:
   - {fileID: 1050220482}
