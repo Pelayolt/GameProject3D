@@ -7296,6 +7296,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1019159182}
   m_SourcePrefab: {fileID: 100100000, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+--- !u!4 &189424588 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3312167451838146087, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &189536321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11507,6 +11512,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1349494480}
   m_SourcePrefab: {fileID: 100100000, guid: e0e851c58997b9c438fae494e3412749, type: 3}
+--- !u!4 &317261358 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2063947290855744239, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &322506113 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 87cc36a45a321ad478c47c9fec13dbd3, type: 3}
@@ -14720,6 +14730,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 14113768}
   m_SourcePrefab: {fileID: 100100000, guid: 120449a04911a924ca1239be382ff0be, type: 3}
+--- !u!4 &409338739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 301532880387059874, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409950706 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
@@ -21181,6 +21196,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &570547715 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9177045630194580144, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &570600997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49154,6 +49174,13 @@ MonoBehaviour:
   - {fileID: 1815223406}
   - {fileID: 148332852}
   equippedWeapon: {fileID: 0}
+  wheels:
+  - {fileID: 2085526755}
+  - {fileID: 570547715}
+  - {fileID: 189424588}
+  - {fileID: 409338739}
+  wheelRadius: 0.5
+  turret: {fileID: 317261358}
 --- !u!195 &1308962747
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -56595,7 +56622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 129.4
+      value: 129
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
       propertyPath: m_LocalPosition.y
@@ -81090,6 +81117,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 329228839}
   m_SourcePrefab: {fileID: 100100000, guid: 0ee6d569ec3227e40888e8151b331e0f, type: 3}
+--- !u!4 &2085526755 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3631182569085828574, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2088078140
 PrefabInstance:
   m_ObjectHideFlags: 0

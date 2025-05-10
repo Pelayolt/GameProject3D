@@ -42228,6 +42228,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ab761d05302615348a9aed34ccd58dd7, type: 3}
+--- !u!4 &1050220479 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 301532880387059874, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 1418616202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1050220480 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3312167451838146087, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 1418616202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1050220481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9177045630194580144, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 1418616202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1050220482 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3631182569085828574, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 1418616202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1050991775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62897,6 +62917,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
   m_PrefabInstance: {fileID: 1418616202}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1418616204 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2063947290855744239, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 1418616202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1418616205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4083431937752462153, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
@@ -62993,6 +63018,13 @@ MonoBehaviour:
   - {fileID: 873810191}
   - {fileID: 2058662168}
   equippedWeapon: {fileID: 0}
+  wheels:
+  - {fileID: 1050220482}
+  - {fileID: 1050220481}
+  - {fileID: 1050220480}
+  - {fileID: 1050220479}
+  wheelRadius: 0.5
+  turret: {fileID: 1418616204}
 --- !u!1001 &1420033011
 PrefabInstance:
   m_ObjectHideFlags: 0
