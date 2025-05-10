@@ -8316,7 +8316,7 @@ GameObject:
   - component: {fileID: 207397553}
   - component: {fileID: 207397552}
   - component: {fileID: 207397551}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Bala
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68921,6 +68921,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3745786531496338126, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -72016,6 +72020,9 @@ MonoBehaviour:
   impactClip: {fileID: 8300000, guid: 07d86f38d24ec394398898718fd5e4fb, type: 3}
   explosionRadius: 5
   explosionDamage: 10
+  CollisionLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!82 &1477656463
 AudioSource:
   m_ObjectHideFlags: 0
@@ -85771,7 +85778,7 @@ GameObject:
   - component: {fileID: 1784733383}
   - component: {fileID: 1784733382}
   - component: {fileID: 1784733381}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85822,6 +85829,9 @@ MonoBehaviour:
   impactClip: {fileID: 8300000, guid: 07d86f38d24ec394398898718fd5e4fb, type: 3}
   explosionRadius: 5
   explosionDamage: 10
+  CollisionLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!82 &1784733382
 AudioSource:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class RocketLife : MonoBehaviour
     private bool hasCollided = false;
     private bool canCollide = false;
 
+    public LayerMask CollisionLayer;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -84,7 +86,7 @@ public class RocketLife : MonoBehaviour
 
     private void Explode()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
+        Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, CollisionLayer);
 
         foreach (var col in hits)
         {
