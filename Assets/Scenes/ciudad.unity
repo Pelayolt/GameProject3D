@@ -22607,7 +22607,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.5
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: b6c97b5fa66226c42aaaff0be8a8240d, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &557634375
 PrefabInstance:
@@ -62881,12 +62881,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1418616211}
-    - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1418616210}
-    - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1418616209}
     - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
       insertIndex: -1
@@ -62894,15 +62888,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1418616207}
+    - targetCorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1418616212}
   m_SourcePrefab: {fileID: 100100000, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
 --- !u!1 &1418616203 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3503318476722469206, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
-  m_PrefabInstance: {fileID: 1418616202}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1418616204 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2457601262040078919, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
   m_PrefabInstance: {fileID: 1418616202}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1418616205 stripped
@@ -62976,27 +62968,7 @@ NavMeshAgent:
   m_BaseOffset: 0.6259148
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1418616210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418616203}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbf9c1e93550b5488cba79790d230ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 10
-  rotationSpeed: 360
-  moveSpeed: 10
-  player: {fileID: 0}
-  enemy_turret: {fileID: 1418616204}
-  tankShooting: {fileID: 0}
-  turretRotationSpeed: 5
-  shootingRange: 10
---- !u!114 &1418616211
+--- !u!114 &1418616212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63019,7 +62991,7 @@ MonoBehaviour:
   - {fileID: 2135339406}
   - {fileID: 1261524829}
   - {fileID: 873810191}
-  - {fileID: 1924082561}
+  - {fileID: 2058662168}
   equippedWeapon: {fileID: 0}
 --- !u!1001 &1420033011
 PrefabInstance:
@@ -88124,7 +88096,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.5
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 39063af83fb52bf49b8e5aa6b6feaec2, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
 --- !u!1001 &2015330849
 PrefabInstance:
