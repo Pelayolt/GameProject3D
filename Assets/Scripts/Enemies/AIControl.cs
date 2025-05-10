@@ -99,7 +99,7 @@ public class AIControl : MonoBehaviour
 
         if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
-            //equippedWeapon.Fire();
+            equippedWeapon.Fire();
             if(m_WaitTime <= 0 && !m_PlayerInShootingRange && distToPlayer >= 6f)
             {
                 m_IsPatrol = true;
