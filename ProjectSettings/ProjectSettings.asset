@@ -16,7 +16,7 @@ PlayerSettings:
   productName: My project
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -42,9 +42,9 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000f000000000000000, type: 0}
     duration: 2
-  - logo: {fileID: 0}
-    duration: 2
-  m_VirtualRealitySplashScreen: {fileID: -1304905567622442630, guid: 70c467b9011a97e4e921566b860728a0, type: 3}
+  - logo: {fileID: 21300000, guid: 7f9abae8d2472cb4b8d40ddfc3eb25d0, type: 3}
+    duration: 5
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 0bb8c249681ba00429319d91208c6fec, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768

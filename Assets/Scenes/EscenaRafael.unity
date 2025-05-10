@@ -7296,6 +7296,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1019159182}
   m_SourcePrefab: {fileID: 100100000, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+--- !u!4 &189424588 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3312167451838146087, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &189536321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11507,6 +11512,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1349494480}
   m_SourcePrefab: {fileID: 100100000, guid: e0e851c58997b9c438fae494e3412749, type: 3}
+--- !u!4 &317261358 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2063947290855744239, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &322506113 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 87cc36a45a321ad478c47c9fec13dbd3, type: 3}
@@ -14720,6 +14730,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 14113768}
   m_SourcePrefab: {fileID: 100100000, guid: 120449a04911a924ca1239be382ff0be, type: 3}
+--- !u!4 &409338739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 301532880387059874, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409950706 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
@@ -14910,9 +14925,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 1577597675}
-  cooldownTime: 0.5
   rocketPool: {fileID: 791233698}
   launchForce: 100
+  audioSource: {fileID: 0}
+  fireClip: {fileID: 0}
   fireTransform1: {fileID: 0}
   fireTransform2: {fileID: 0}
   fireTransform3: {fileID: 0}
@@ -21180,6 +21196,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &570547715 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9177045630194580144, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &570600997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23756,7 +23777,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankTurret: {fileID: 195303504930362824}
   tankGun: {fileID: 980924456}
-  uiCrosshair: {fileID: 160446168}
   mouseSensitivity: 2
 --- !u!1001 &638164881
 PrefabInstance:
@@ -34331,7 +34351,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.5
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: f08e849081aeb2c4fb562a6a52af86b2, type: 2}
   m_BuildHeightMesh: 0
@@ -38880,8 +38900,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 1454412086}
-  cooldownTime: 1
   bulletPool: {fileID: 1481605169}
+  audioSource: {fileID: 0}
+  fireClip: {fileID: 0}
   launchForce: 40
 --- !u!1 &1053837988 stripped
 GameObject:
@@ -39284,9 +39305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee4f793688007e4c880e71619a01198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 5
-  explosionPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
-  impactClip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
 --- !u!82 &1066652795
 AudioSource:
   m_ObjectHideFlags: 0
@@ -49151,9 +49169,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   waypoints:
-  - {fileID: 968982908}
   - {fileID: 1222568311}
+  - {fileID: 968982908}
+  - {fileID: 1815223406}
+  - {fileID: 148332852}
   equippedWeapon: {fileID: 0}
+  wheels:
+  - {fileID: 2085526755}
+  - {fileID: 570547715}
+  - {fileID: 189424588}
+  - {fileID: 409338739}
+  wheelRadius: 0.5
+  turret: {fileID: 317261358}
 --- !u!195 &1308962747
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -50632,7 +50659,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.5
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: d4e2a10f6dbaed84aacedba54f9c7959, type: 2}
   m_BuildHeightMesh: 0
@@ -55107,7 +55134,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.5
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: c1f4c01896225644ba73654df5d80ced, type: 2}
   m_BuildHeightMesh: 0
@@ -56595,7 +56622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 129.4
+      value: 129
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
       propertyPath: m_LocalPosition.y
@@ -60933,8 +60960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 0}
-  audioSource: {fileID: 1599714641}
-  fireClip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   equippedWeapon: {fileID: 0}
 --- !u!82 &1599714641
 AudioSource:
@@ -61067,6 +61092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarFill: {fileID: 901407007}
   maxHealth: 100
+  currentHealth: 0
 --- !u!114 &1599714651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61079,30 +61105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453c959a7f42c5e42b1d04108004d645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspensionPoints:
-  - suspensionPoint: {fileID: 1641678992}
-    springForce: 15000
-    damper: 200
-    restLength: 0.5
-    lastLength: 0
-  - suspensionPoint: {fileID: 433300226}
-    springForce: 15000
-    damper: 200
-    restLength: 0.5
-    lastLength: 0
-  - suspensionPoint: {fileID: 58941862}
-    springForce: 15000
-    damper: 200
-    restLength: 0.5
-    lastLength: 0
-  - suspensionPoint: {fileID: 1804292981}
-    springForce: 15000
-    damper: 200
-    restLength: 0.5
-    lastLength: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &1600406486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: dac1a631b172e66469fb09e9987bcf57, type: 3}
@@ -77688,11 +77690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b85ad30c3673414c8847bea72a48e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 5
-  explosionPrefab: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
-  impactClip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
-  explosionRadius: 5
-  explosionDamage: 50
 --- !u!82 &2013120471
 AudioSource:
   m_ObjectHideFlags: 0
@@ -81120,6 +81117,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 329228839}
   m_SourcePrefab: {fileID: 100100000, guid: 0ee6d569ec3227e40888e8151b331e0f, type: 3}
+--- !u!4 &2085526755 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3631182569085828574, guid: dc84a58afe1344547a230a5cb3c072c8, type: 3}
+  m_PrefabInstance: {fileID: 807895286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2088078140
 PrefabInstance:
   m_ObjectHideFlags: 0

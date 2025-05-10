@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviour, IDamageable
 {
     public Image healthBarFill;
     public float maxHealth = 100f;

@@ -7,7 +7,7 @@ public class AIControl : MonoBehaviour
     float startWaitTime = 2;
     float timeToRotate = 2;
     
-    float moveSpeed = 8f;
+    float moveSpeed = 12f;
 
     float viewRadius = 30f;
     float viewAngle = 90;
@@ -20,17 +20,30 @@ public class AIControl : MonoBehaviour
     public Transform[] waypoints;
     int m_CurrentWaypointIndex;
 
-    Vector3 playerLastPosition = Vector3.zero;
-    Vector3 m_PlayerPosition;
+    public Vector3 playerLastPosition = Vector3.zero;
+    public Vector3 m_PlayerPosition;
 
     float m_WaitTime;
     float m_TimeToRotate;
-    bool m_PlayerInChaseRange;
+    public bool m_PlayerInChaseRange;
     bool m_PlayerNear;
-    bool m_IsPatrol;
+    public bool m_IsPatrol;
     bool m_PlayerInShootingRange;
 
+    float patroling_distance = 0f;
+    float chase_distance = 15f;
+
+    float shootingDistance = 10f;
+
     public TankWeapon equippedWeapon;
+    public Transform[] wheels;
+    public float wheelRadius = 0.5f;
+
+    private Vector3 previousPosition;
+
+    public Transform turret;
+
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,6 +55,7 @@ public class AIControl : MonoBehaviour
         m_PlayerInChaseRange = false;
         m_WaitTime = startWaitTime;
         m_TimeToRotate = timeToRotate;
+        previousPosition = transform.position;
 
         m_CurrentWaypointIndex = 0;
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -64,50 +78,38 @@ public class AIControl : MonoBehaviour
         {
             Patroling();
         }
+        RotateWheels();
     }
 
     public void Chasing()
     {
-        m_PlayerNear = false;
-        playerLastPosition = Vector3.zero;
-       
-       // if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
-        //{
-        //    m_PlayerInShootingRange = true;
-        //}
-        //else
-        //{
-          //  m_PlayerInShootingRange = false;
-       // }
+        m_PlayerNear = false;       
+       float distToPlayer = Vector3.Distance(transform.position, m_PlayerPosition);
 
-        if(!m_PlayerInShootingRange)
+        if(m_PlayerInChaseRange)
         {
-            Move();
+            RotateTurretTowardsPlayer();
             navMeshAgent.SetDestination(m_PlayerPosition);
         }
-        else{
-            equippedWeapon.Fire();
+        else
+        {
+            navMeshAgent.SetDestination(playerLastPosition);
         }
+        Move();
+
         if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
-            if(m_WaitTime <= 0 && !m_PlayerInShootingRange && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
+            equippedWeapon.Fire();
+            if(m_WaitTime <= 0 && !m_PlayerInShootingRange && distToPlayer >= 6f)
             {
                 m_IsPatrol = true;
-                navMeshAgent.stoppingDistance = 15;
+                navMeshAgent.stoppingDistance = patroling_distance;
                 m_PlayerNear = false;
                 Move();
                 m_TimeToRotate = timeToRotate;
                 m_WaitTime = startWaitTime;
                 navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
             
-            }
-            else
-            {
-                if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2.5f)
-                {
-                    Stop();
-                    m_WaitTime -= Time.deltaTime;
-                }
             }
         }
     }
@@ -130,8 +132,6 @@ public class AIControl : MonoBehaviour
         else
         {
             m_PlayerNear = false;
-            playerLastPosition = Vector3.zero;
-            navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
             if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
                 if(m_WaitTime <= 0)
@@ -149,10 +149,6 @@ public class AIControl : MonoBehaviour
         }
     }
 
-    void PlayerInShootingRange()
-    {
-        m_PlayerInShootingRange = true;
-    }
 
     void Move()
     {
@@ -205,7 +201,7 @@ public class AIControl : MonoBehaviour
                 {
                     m_PlayerInChaseRange = true;
                     m_IsPatrol = false;
-                    navMeshAgent.stoppingDistance = 30;
+                    navMeshAgent.stoppingDistance = chase_distance;
                 }
                 else{
                     m_PlayerInChaseRange = false; 
@@ -213,8 +209,42 @@ public class AIControl : MonoBehaviour
             }
         }
         if (m_PlayerInChaseRange){
+            playerLastPosition = m_PlayerPosition;
             m_PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         }
     }
+
+    void RotateWheels()
+    {
+        // Calculate how far the tank has moved since the last frame
+        Vector3 movement = transform.position - previousPosition;
+        float distanceMoved = movement.magnitude;
+
+        // Calculate rotation angle based on wheel circumference
+        float rotationAngle = (distanceMoved / (2 * Mathf.PI * wheelRadius)) * 360f;
+
+        // Apply rotation to each wheel
+        foreach (Transform wheel in wheels)
+        {
+            wheel.Rotate(Vector3.right, rotationAngle);
+        }
+
+        previousPosition = transform.position;
+    }
+
+    void RotateTurretTowardsPlayer()
+{
+
+    Vector3 direction = m_PlayerPosition - turret.position;
+    direction.y = 0; // Ignore vertical difference to keep turret rotation level
+
+    if (direction.sqrMagnitude > 0.01f)
+    {
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        turret.rotation = Quaternion.Slerp(turret.rotation, lookRotation, Time.deltaTime * 5f);
+    }
 }
+
+}
+
 
