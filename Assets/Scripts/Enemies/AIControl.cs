@@ -36,6 +36,14 @@ public class AIControl : MonoBehaviour
     float shootingDistance = 10f;
 
     public TankWeapon equippedWeapon;
+    public Transform[] wheels;
+    public float wheelRadius = 0.5f;
+
+    private Vector3 previousPosition;
+
+    public Transform turret;
+
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,6 +55,7 @@ public class AIControl : MonoBehaviour
         m_PlayerInChaseRange = false;
         m_WaitTime = startWaitTime;
         m_TimeToRotate = timeToRotate;
+        previousPosition = transform.position;
 
         m_CurrentWaypointIndex = 0;
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -69,6 +78,7 @@ public class AIControl : MonoBehaviour
         {
             Patroling();
         }
+        RotateWheels();
     }
 
     public void Chasing()
@@ -78,6 +88,7 @@ public class AIControl : MonoBehaviour
 
         if(m_PlayerInChaseRange)
         {
+            RotateTurretTowardsPlayer();
             navMeshAgent.SetDestination(m_PlayerPosition);
         }
         else
@@ -202,5 +213,38 @@ public class AIControl : MonoBehaviour
             m_PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         }
     }
+
+    void RotateWheels()
+    {
+        // Calculate how far the tank has moved since the last frame
+        Vector3 movement = transform.position - previousPosition;
+        float distanceMoved = movement.magnitude;
+
+        // Calculate rotation angle based on wheel circumference
+        float rotationAngle = (distanceMoved / (2 * Mathf.PI * wheelRadius)) * 360f;
+
+        // Apply rotation to each wheel
+        foreach (Transform wheel in wheels)
+        {
+            wheel.Rotate(Vector3.right, rotationAngle);
+        }
+
+        previousPosition = transform.position;
+    }
+
+    void RotateTurretTowardsPlayer()
+{
+
+    Vector3 direction = m_PlayerPosition - turret.position;
+    direction.y = 0; // Ignore vertical difference to keep turret rotation level
+
+    if (direction.sqrMagnitude > 0.01f)
+    {
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        turret.rotation = Quaternion.Slerp(turret.rotation, lookRotation, Time.deltaTime * 5f);
+    }
 }
+
+}
+
 
