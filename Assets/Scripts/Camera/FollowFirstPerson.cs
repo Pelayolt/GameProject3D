@@ -11,37 +11,27 @@ public class FollowFirstPerson : MonoBehaviour
     public float mouseSensitivity = 2f;
     private bool paused = false;
 
-    private Vector3 offset;
     private Camera cam;
+    private float pitch = 0f;
 
     void Start()
     {
         cam = GetComponent<Camera>();
-        offset = transform.position - tankTurret.position;
-    }
-
-    void BlockMouse()
-    {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;      
+        Cursor.visible = false;
     }
-
-    void UnblockMouse()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
 
     void OnEnable()
     {
-        BlockMouse();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SetGunTransparency(true); // Transparencia alta al activar
     }
 
     void OnDisable()
     {
-        UnblockMouse();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SetGunTransparency(false);   // Totalmente opaco al desactivar
     }
 
@@ -49,30 +39,27 @@ public class FollowFirstPerson : MonoBehaviour
     {
         if (Time.timeScale == 0f)
         {
-            UnblockMouse();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             paused = true;
         }else{
             if(paused)
             {
-                BlockMouse();
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 paused = false;
             }
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             tankTurret.Rotate(Vector3.up * mouseX);
         }
-        
     }
 
     void LateUpdate()
     {
-        float pitch = tankGun.localEulerAngles.x;
-        if (pitch > 180f) pitch -= 360f;
+        float gunPitch = tankGun.localEulerAngles.x;
+        if (gunPitch > 180f) gunPitch -= 360f;
 
-        transform.position = tankTurret.position + tankTurret.rotation * offset;
-
-        Quaternion verticalRot = Quaternion.Euler(pitch, 0f, 0f);
-        Quaternion horizontalRot = Quaternion.Euler(0f, tankTurret.eulerAngles.y, 0f);
-        transform.rotation = horizontalRot * verticalRot;
+        transform.localRotation = Quaternion.Euler(gunPitch, 0f, 0f);
     }
 
     void SetGunTransparency(bool enableTransparent)
@@ -116,5 +103,4 @@ public class FollowFirstPerson : MonoBehaviour
                 weapon.gameObject.SetActive(false); // Restaurar estado
         }
     }
-
 }
