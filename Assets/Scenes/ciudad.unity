@@ -20645,7 +20645,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1
-  equippedWeapon: {fileID: 547188983}
+  equippedWeapon: {fileID: 1131825151}
   wheels:
   - {fileID: 966071378}
   - {fileID: 35674978}
@@ -24873,7 +24873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &547188981
 Transform:
   m_ObjectHideFlags: 0
@@ -53391,7 +53391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1131825149
 Transform:
   m_ObjectHideFlags: 0
@@ -80544,7 +80544,7 @@ ParticleSystem:
     quality: 0
     voxelSize: 0.5
     collisionMessages: 1
-    collidesWithDynamic: 0
+    collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
     enabled: 0
