@@ -62,12 +62,6 @@ public class AIControl : MonoBehaviour
         {
             Patrolling();
         }
-
-        if (playerInChaseRange)
-        {
-            RotateTurretTowardsPlayer();
-        }
-
         RotateWheels();
     }
 
@@ -81,7 +75,7 @@ public class AIControl : MonoBehaviour
             Transform player = hit.transform;
             Vector3 dirToPlayer = (player.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
+            if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle)
             {
                 float dstToPlayer = Vector3.Distance(transform.position, player.position);
                 if (!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask))
@@ -92,8 +86,6 @@ public class AIControl : MonoBehaviour
 
                     playerLastPosition = playerPosition;
                     playerPosition = player.position;
-
-                    RotateTurretTowardsPlayer();
                     return;
                 }
             }
@@ -103,14 +95,17 @@ public class AIControl : MonoBehaviour
 
     void Chasing()
     {
-        playerNear = false;
+        playerNear = true;
         float distToPlayer = Vector3.Distance(transform.position, playerPosition);
         playerInShootingRange = distToPlayer <= shootingDistance;
 
         navMeshAgent.SetDestination(playerInChaseRange ? playerPosition : playerLastPosition);
         Move();
 
-        RotateTurretTowardsPlayer();
+        if (!(equippedWeapon is PlasmaBeam pb && pb.isFiring))
+        {
+            RotateTurretTowardsPlayer();
+        }
 
         if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
@@ -119,7 +114,7 @@ public class AIControl : MonoBehaviour
                 if (playerInShootingRange) flamethrower.Fire();
                 else flamethrower.StopFire();
             }
-            else
+            else if (playerInShootingRange)
             {
                 equippedWeapon.Fire();
             }
@@ -133,8 +128,6 @@ public class AIControl : MonoBehaviour
                 waitTime = startWaitTime;
                 navMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
 
-                if (equippedWeapon is Flamethrower flamethrower2)
-                    flamethrower2.StopFire();
             }
         }
         else if (equippedWeapon is Flamethrower flamethrower3)
@@ -233,12 +226,10 @@ public class AIControl : MonoBehaviour
         Vector3 direction = playerPosition - turret.position;
         direction.y = 0f;
 
-        Debug.DrawRay(turret.position, direction.normalized * 5f, Color.red);
-
         if (direction.sqrMagnitude > 0.01f)
         {
             Quaternion lookRotation = Quaternion.LookRotation(direction);
-            turret.rotation = Quaternion.Slerp(turret.rotation, lookRotation, Time.deltaTime * 5f);
+            turret.rotation = Quaternion.Slerp(turret.rotation, lookRotation, Time.deltaTime * 2f);
         }
     }
 

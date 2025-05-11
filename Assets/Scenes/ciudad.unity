@@ -8322,7 +8322,7 @@ MonoBehaviour:
   lifetime: 5
   explosionPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
   impactClip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
-  damage: 10
+  damage: 5
 --- !u!82 &207397552
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25258,7 +25258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &613426677
 Transform:
   m_ObjectHideFlags: 0
@@ -25392,12 +25392,13 @@ MonoBehaviour:
   laserEffect2: {fileID: 809225767}
   audioSource: {fileID: 613426678}
   fireClip: {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
-  damagePerSecond: 50
+  isFiring: 0
+  damagePerSecond: 10
   maxDistance: 1000
   impactAnimationPrefab: {fileID: 1141330259687333427, guid: 6718dc24203da53468af9ada8fef7d6d, type: 3}
   hitLayers:
     serializedVersion: 2
-    m_Bits: 664
+    m_Bits: 88
 --- !u!23 &613426680
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38149,7 +38150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f4cbef50b13fe43a2b11fd786d2f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerHit: 0.5
+  damagePerHit: 0.2
 --- !u!199 &921216000
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -44175,7 +44176,8 @@ MonoBehaviour:
   laserEffect2: {fileID: 449620258}
   audioSource: {fileID: 952268079}
   fireClip: {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
-  damagePerSecond: 50
+  isFiring: 0
+  damagePerSecond: 40
   maxDistance: 1000
   impactAnimationPrefab: {fileID: 1141330259687333427, guid: 6718dc24203da53468af9ada8fef7d6d, type: 3}
   hitLayers:
@@ -67699,7 +67701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1396966469
 Transform:
   m_ObjectHideFlags: 0
@@ -68875,7 +68877,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1
-  equippedWeapon: {fileID: 1396966473}
+  equippedWeapon: {fileID: 613426679}
   wheels:
   - {fileID: 3631182568339873876}
   - {fileID: 9177045629464094522}
@@ -78998,7 +79000,7 @@ MonoBehaviour:
   lifetime: 5
   explosionPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
   impactClip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
-  damage: 10
+  damage: 20
 --- !u!82 &1635233044
 AudioSource:
   m_ObjectHideFlags: 0
@@ -85681,7 +85683,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   impactClip: {fileID: 8300000, guid: 07d86f38d24ec394398898718fd5e4fb, type: 3}
   explosionRadius: 5
-  explosionDamage: 10
+  explosionDamage: 3
   CollisionLayer:
     serializedVersion: 2
     m_Bits: 8192
@@ -100194,7 +100196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3503318475321156828}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7457159, z: -0, w: 0.66626406}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 86.9, y: 9, z: 1.6}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -100205,7 +100207,7 @@ Transform:
   - {fileID: 3312167452718283693}
   - {fileID: 301532881117539624}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -96.441, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &3312167452718283693
 Transform:
   m_ObjectHideFlags: 0

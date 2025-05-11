@@ -5,12 +5,12 @@ public class PlasmaBeam : TankWeapon
 {
     public GameObject laserEffect;       // Prefab del láser (de FX Lightning II)
     public float laserDuration = 3f;   // Tiempo visible del láser
-    public override float cooldownTime => 4f;
+    public override float cooldownTime => 6f;
     public GameObject laserEffect2;
     public AudioSource audioSource;
     public AudioClip fireClip;
-    private bool isFiring = false;
-    public float damagePerSecond = 50f;
+    public bool isFiring = false;
+    public float damagePerSecond = 20f;
     public float maxDistance = 1000f;
     private Vector3 laserStart;
     private Vector3 laserEnd;
@@ -82,7 +82,14 @@ public class PlasmaBeam : TankWeapon
         RaycastHit[] hits = Physics.RaycastAll(laserStart, direction, maxDistance, hitLayers);
         foreach (RaycastHit hit in hits)
         {
-            IDamageable dmg = hit.collider.GetComponentInParent<IDamageable>();
+
+            IDamageable dmg = hit.collider.GetComponent<IDamageable>();
+            if (dmg == null)
+                dmg = hit.collider.GetComponentInParent<IDamageable>();
+            if (dmg == null)
+                dmg = hit.collider.GetComponentInChildren<IDamageable>();   
+            Debug.Log("PlasmaBeam: " + hit.collider.name);
+
             if (dmg != null)
             {
                 float damage = damagePerSecond * Time.deltaTime;
