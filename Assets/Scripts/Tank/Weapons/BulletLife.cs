@@ -13,11 +13,6 @@ public class BulletLife : MonoBehaviour
     private bool canCollide = false;
     public float damage = 10f;
 
-    private void Start()
-    {
-        Invoke(nameof(EnableCollision), 0.1f); // Espera un poco antes de permitir colisiones
-    }
-
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -28,10 +23,8 @@ public class BulletLife : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!canCollide || hasCollided) return;
+        if (hasCollided) return;
         hasCollided = true;
-
-        
 
         Debug.Log("Colision con: " + collision.collider.name);
         IDamageable dmg = collision.gameObject.GetComponent<IDamageable>();
@@ -43,11 +36,6 @@ public class BulletLife : MonoBehaviour
         {
             dmg.TakeDamage(damage);
             Debug.Log("Daño por golpeo con: " + collision.collider.name);
-
-            if (collision.rigidbody != null && collision.rigidbody.CompareTag("Player"))
-            {
-                collision.rigidbody.linearVelocity = Vector3.zero;
-            }
         }
 
         if (explosionPrefab != null)
@@ -75,7 +63,6 @@ public class BulletLife : MonoBehaviour
 
     private void OnEnable()
     {
-        hasCollided = false;
         CancelInvoke();
 
         SetVisualsActive(true);
@@ -86,11 +73,6 @@ public class BulletLife : MonoBehaviour
         }
 
         Invoke(nameof(DisableBullet), lifetime);
-    }
-
-    private void EnableCollision()
-    {
-        canCollide = true;
     }
 
     private void SetVisualsActive(bool isActive)
@@ -108,6 +90,7 @@ public class BulletLife : MonoBehaviour
 
     private void DisableBullet()
     {
+        hasCollided = false;
         if (rb != null)
         {
             rb.isKinematic = false; // Reactivar física cuando vuelva al pool

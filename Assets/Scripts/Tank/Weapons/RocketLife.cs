@@ -12,7 +12,6 @@ public class RocketLife : MonoBehaviour
     private Rigidbody rb;
     private AudioSource audioSource;
     private bool hasCollided = false;
-    private bool canCollide = false;
 
     public LayerMask CollisionLayer;
 
@@ -28,7 +27,6 @@ public class RocketLife : MonoBehaviour
         audioSource.Stop();
 
         hasCollided = false;
-        canCollide = false;
         CancelInvoke();
 
         SetVisualsActive(true);
@@ -38,13 +36,12 @@ public class RocketLife : MonoBehaviour
             rb.isKinematic = false;
         }
 
-        Invoke(nameof(EnableCollision), 0.05f);     // Espera mínima tras activación
         Invoke(nameof(DisableRocket), lifetime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!canCollide || hasCollided) return;
+        if (hasCollided) return;
         hasCollided = true;
 
         Debug.Log($"🚀 Colisión con: {collision.collider.name}");
@@ -79,25 +76,33 @@ public class RocketLife : MonoBehaviour
         Invoke(nameof(DisableRocket), 3f);
     }
 
-    private void EnableCollision()
-    {
-        canCollide = true;
-    }
-
     private void Explode()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, CollisionLayer);
-
+        foreach (var hit in hits)
+        {
+            Debug.Log($"Hit: {hit.name}");
+        }
         foreach (var col in hits)
         {
-            IDamageable dmg = col.GetComponentInParent<IDamageable>();
+            IDamageable dmg = col.GetComponent<IDamageable>();
+            if (dmg == null)
+                dmg = col.GetComponentInParent<IDamageable>();
+            if (dmg == null)
+                dmg = col.GetComponentInChildren<IDamageable>();
             if (dmg != null)
             {
                 dmg.TakeDamage(explosionDamage);
-                Debug.Log($"🔥 Daño en área a: {col.name}");
             }
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
 
     private void DisableRocket()
     {

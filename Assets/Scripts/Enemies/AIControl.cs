@@ -16,7 +16,7 @@ public class AIControl : MonoBehaviour
     public float moveSpeed = 12f;
     public float viewRadius = 30f;
     public float viewAngle = 90f;
-    public float shootingDistance = 10f;
+    public float shootingDistance = 15f;
     public float wheelRadius = 0.5f;
     public float patrolingDistance = 0f;
     public float chaseDistance = 15f;
@@ -95,7 +95,7 @@ public class AIControl : MonoBehaviour
 
     void Chasing()
     {
-        playerNear = true;
+        playerNear = false;
         float distToPlayer = Vector3.Distance(transform.position, playerPosition);
         playerInShootingRange = distToPlayer <= shootingDistance;
 
@@ -119,7 +119,7 @@ public class AIControl : MonoBehaviour
                 equippedWeapon.Fire();
             }
 
-            if (waitTime <= 0 && !playerInShootingRange && distToPlayer >= 6f)
+            if (waitTime <= 0 && !playerInShootingRange && distToPlayer >= 10f)
             {
                 isPatrolling = true;
                 navMeshAgent.stoppingDistance = patrolingDistance;

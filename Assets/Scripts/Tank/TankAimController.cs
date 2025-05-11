@@ -39,6 +39,7 @@ public class TankAimController : MonoBehaviour
         Ray ray = thirdPersonCamera.ScreenPointToRay(Input.mousePosition);
         int layerMask = ~(
             (1 << LayerMask.NameToLayer("IgnoreMainCamera")) |
+            (1 << LayerMask.NameToLayer("Destructible")) |
             (1 << LayerMask.NameToLayer("TankPlayer"))
         );
 

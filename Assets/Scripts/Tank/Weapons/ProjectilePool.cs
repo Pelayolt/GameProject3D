@@ -16,6 +16,7 @@ public class ProjectilePool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             Rigidbody p = Instantiate(projectilePrefab, transform);
+            
             p.gameObject.SetActive(false);
             projectiles.Add(p);
         }
