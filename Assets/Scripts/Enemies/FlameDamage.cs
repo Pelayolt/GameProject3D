@@ -12,8 +12,6 @@ public class FlameDamage : MonoBehaviour
         if (dmg == null)
             dmg = collision.gameObject.GetComponentInChildren<IDamageable>();   
 
-        Debug.Log("FlameDamage: " + collision.name);
-                
         if (dmg != null)
         {
             dmg.TakeDamage(damagePerHit);
