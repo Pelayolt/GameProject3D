@@ -86,6 +86,10 @@ public class BulletLife : MonoBehaviour
             if (isActive) ps.Play();
             else ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
+
+        Collider col = GetComponent<Collider>();
+        if (col != null)
+            col.enabled = isActive;
     }
 
     private void DisableBullet()

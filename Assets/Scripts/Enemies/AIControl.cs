@@ -10,16 +10,16 @@ public class AIControl : MonoBehaviour
     public TankWeapon equippedWeapon;
     public Transform[] wheels;
     public Transform turret;
-    private Transform playerTransform;
+    public Transform playerTransform;
 
 
     public float moveSpeed = 12f;
     public float viewRadius = 30f;
     public float viewAngle = 90f;
-    public float shootingDistance = 15f;
+    public float shootingDistance = 20f;
     public float wheelRadius = 0.5f;
     public float patrolingDistance = 0f;
-    public float chaseDistance = 15f;
+    public float chaseDistance = 20f;
 
     private int currentWaypointIndex = 0;
     private Vector3 previousPosition;
@@ -46,16 +46,16 @@ public class AIControl : MonoBehaviour
         previousPosition = transform.position;
         waitTime = startWaitTime;
         rotateTime = timeToRotate;
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
+        playerPosition = playerTransform.position;
+
         EnviromentView();
 
         if (!isPatrolling)
         {
-            playerPosition = playerTransform.position;
             Chasing();
         }
         else
@@ -69,7 +69,7 @@ public class AIControl : MonoBehaviour
     void EnviromentView()
     {
         Collider[] playerInRange = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
-
+        
         foreach (var hit in playerInRange)
         {
             Transform player = hit.transform;
@@ -85,7 +85,7 @@ public class AIControl : MonoBehaviour
                     navMeshAgent.stoppingDistance = chaseDistance;
 
                     playerLastPosition = playerPosition;
-                    playerPosition = player.position;
+                    
                     return;
                 }
             }
@@ -99,41 +99,27 @@ public class AIControl : MonoBehaviour
         float distToPlayer = Vector3.Distance(transform.position, playerPosition);
         playerInShootingRange = distToPlayer <= shootingDistance;
 
-        navMeshAgent.SetDestination(playerInChaseRange ? playerPosition : playerLastPosition);
-        Move();
+        navMeshAgent.SetDestination(playerPosition);
 
         if (!(equippedWeapon is PlasmaBeam pb && pb.isFiring))
         {
             RotateTurretTowardsPlayer();
-        }
 
-        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            Debug.DrawLine(turret.position, playerPosition, Color.red);
+        }
+       
+        if (navMeshAgent.remainingDistance <= chaseDistance)
         {
-            if (equippedWeapon is Flamethrower flamethrower)
-            {
-                if (playerInShootingRange) flamethrower.Fire();
-                else flamethrower.StopFire();
-            }
-            else if (playerInShootingRange)
-            {
-                equippedWeapon.Fire();
-            }
-
-            if (waitTime <= 0 && !playerInShootingRange && distToPlayer >= 10f)
-            {
-                isPatrolling = true;
-                navMeshAgent.stoppingDistance = patrolingDistance;
-                Move();
-                rotateTime = timeToRotate;
-                waitTime = startWaitTime;
-                navMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
-
-            }
+            Stop();
+            equippedWeapon.Fire();
         }
-        else if (equippedWeapon is Flamethrower flamethrower3)
-        {
-            flamethrower3.StopFire();
-        }
+        else{
+            Move();
+            if (equippedWeapon is Flamethrower flamethrower3)
+            {
+                flamethrower3.StopFire();
+            }
+        } 
     }
 
     void Patrolling()

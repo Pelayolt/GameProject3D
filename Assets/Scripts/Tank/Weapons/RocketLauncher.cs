@@ -6,6 +6,7 @@ public class RocketLauncher : TankWeapon
 {
     public ProjectilePool rocketPool;
     public float launchForce = 100f;
+    public override float cooldownTime => 3f;
     public AudioSource audioSource;
     public AudioClip fireClip;
     public Transform fireTransform1;

@@ -45,18 +45,14 @@ public class RocketLife : MonoBehaviour
         hasCollided = true;
 
         Debug.Log($"🚀 Colisión con: {collision.collider.name}");
-
-        // 🔥 1. Hacer daño en área
         Explode();
 
-        // 🔥 2. Crear explosión visual
         if (explosionPrefab != null)
         {
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(explosion, 2f);
         }
 
-        // 🔥 3. Detener física
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
@@ -64,10 +60,8 @@ public class RocketLife : MonoBehaviour
             rb.isKinematic = true;
         }
 
-        // 🔥 4. Desactivar visuales
         SetVisualsActive(false);
 
-        // 🔥 5. Sonido de impacto
         if (audioSource != null && impactClip != null)
         {
             audioSource.PlayOneShot(impactClip, 0.2f);
@@ -103,14 +97,12 @@ public class RocketLife : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
-
     private void DisableRocket()
     {
         if (rb != null)
         {
-            rb.isKinematic = false;
+            rb.isKinematic = true;
         }
-
         gameObject.SetActive(false);
     }
 
@@ -124,5 +116,10 @@ public class RocketLife : MonoBehaviour
             if (isActive) ps.Play();
             else ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
+
+        Collider col = GetComponent<Collider>();
+        if (col != null)
+                col.enabled = isActive;
+
     }
 }
