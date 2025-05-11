@@ -81,15 +81,15 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     void ChasePlayer() //Chase player after being hit
     {
-        aiControl.m_IsPatrol = false;
-        aiControl.m_PlayerInChaseRange = true;
+        aiControl.isPatrolling = false;
+        aiControl.playerInChaseRange = true;
 
         // Update player position so the AI has a direction
         Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
         if (player != null)
         {
             aiControl.playerLastPosition = player.position;
-            aiControl.m_PlayerPosition = player.position;
+            aiControl.playerPosition = player.position;
         }
     }
 }

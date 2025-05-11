@@ -19,7 +19,11 @@ public class TankShooting : MonoBehaviour
         {
             equippedWeapon.Fire();
         }
-
+        if (Input.GetButtonUp("Fire1") && equippedWeapon is Flamethrower flamethrower)
+        {
+            flamethrower.StopFire();
+        }
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             EquipWeapon(0); // Equipa la primera arma
