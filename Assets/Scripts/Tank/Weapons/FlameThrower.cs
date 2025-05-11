@@ -7,7 +7,6 @@ public class Flamethrower : TankWeapon
     public AudioClip fireClip;
     public override float cooldownTime => 0f;
 
-
     private bool isFiring = false;
 
     void OnEnable()
@@ -27,25 +26,17 @@ public class Flamethrower : TankWeapon
 
     public override void Fire()
     {
-        if (!CanFire()) return;
+        if (!CanFire() || isFiring) return;
+        flameEffect.Play();
+        isFiring = true;
 
-        if (!isFiring)
-        {
-            flameEffect.Play();
-            isFiring = true;
-
-            if (audioSource != null && fireClip != null)
-                audioSource.Play();
-        }
-
-        cooldownTimer = 0f;
+        if (audioSource != null && fireClip != null)
+            audioSource.Play();
     }
 
-    protected override void Update()
+    public void StopFire()
     {
-        base.Update();
-
-        if (isFiring && !Input.GetButton("Fire1"))
+        if (isFiring)
         {
             flameEffect.Stop();
             isFiring = false;
@@ -54,4 +45,5 @@ public class Flamethrower : TankWeapon
                 audioSource.Stop();
         }
     }
+
 }

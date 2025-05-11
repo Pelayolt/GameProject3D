@@ -13,6 +13,10 @@ public class BulletLife : MonoBehaviour
     private bool canCollide = false;
     public float damage = 10f;
 
+    private void Start()
+    {
+        Invoke(nameof(EnableCollision), 0.1f); // Espera un poco antes de permitir colisiones
+    }
 
     private void Awake()
     {
@@ -27,12 +31,23 @@ public class BulletLife : MonoBehaviour
         if (!canCollide || hasCollided) return;
         hasCollided = true;
 
+        
+
         Debug.Log("Colision con: " + collision.collider.name);
-        IDamageable dmg = collision.collider.GetComponentInParent<IDamageable>();
+        IDamageable dmg = collision.gameObject.GetComponent<IDamageable>();
+        if (dmg == null)
+            dmg = collision.gameObject.GetComponentInParent<IDamageable>();
+        if (dmg == null)
+            dmg = collision.gameObject.GetComponentInChildren<IDamageable>();
         if (dmg != null)
         {
             dmg.TakeDamage(damage);
             Debug.Log("Daño por golpeo con: " + collision.collider.name);
+
+            if (collision.rigidbody != null && collision.rigidbody.CompareTag("Player"))
+            {
+                collision.rigidbody.linearVelocity = Vector3.zero;
+            }
         }
 
         if (explosionPrefab != null)
@@ -58,11 +73,9 @@ public class BulletLife : MonoBehaviour
         Invoke(nameof(DisableBullet), 3f);
     }
 
-
     private void OnEnable()
     {
         hasCollided = false;
-        canCollide = false;
         CancelInvoke();
 
         SetVisualsActive(true);
@@ -72,7 +85,6 @@ public class BulletLife : MonoBehaviour
             rb.isKinematic = false;
         }
 
-        Invoke(nameof(EnableCollision), 0.05f);
         Invoke(nameof(DisableBullet), lifetime);
     }
 
