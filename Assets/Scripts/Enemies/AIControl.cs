@@ -124,9 +124,7 @@ public class AIControl : MonoBehaviour
 
     void Patrolling()
     {
-        if (!navMeshAgent.hasPath || navMeshAgent.pathStatus != NavMeshPathStatus.PathComplete)
-            Debug.LogWarning($"{gameObject.name} has invalid NavMesh path!");
-
+     
         if (playerNear)
         {
             if (rotateTime <= 0)
