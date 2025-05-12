@@ -226,7 +226,7 @@ MonoBehaviour:
     eres la resistencia.\n\nCarga el ca\xF1\xF3n. Activa los motores.\nTITAN debe
     caer.\n< ESPACIO para continuar>"
   typingSpeed: 0.02
-  nextSceneName: GameScene
+  nextSceneName: Dialogo_ciudad
 --- !u!4 &902657317
 Transform:
   m_ObjectHideFlags: 0
