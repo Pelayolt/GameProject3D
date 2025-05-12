@@ -9,7 +9,7 @@ public class LoreSceneSingle : MonoBehaviour
     public string fullText;
 
     public float typingSpeed = 0.03f;
-    public string nextSceneName = "Level1";
+    public string nextSceneName;
 
     private bool isTyping = false;
     private bool finishedTyping = false;

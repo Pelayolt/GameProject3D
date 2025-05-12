@@ -4,6 +4,7 @@ using UnityEngine.Audio;
 
 public class OptionsMenu : MonoBehaviour
 {
+    public static OptionsMenu Instance;
 
     public GameObject optionsPopup;
     public GameObject closeButton;
@@ -21,10 +22,16 @@ public class OptionsMenu : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        
     }
     void Start()
     {
+        if(Instance != null && Instance != this){
+            Destroy(gameObject);
+        }else{
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         optionsPopup.SetActive(false);
         controlsPopup.SetActive(false);
         TitleMode();

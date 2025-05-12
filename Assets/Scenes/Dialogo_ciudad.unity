@@ -224,7 +224,7 @@ MonoBehaviour:
     acero, coraje y fuego.\n\nHaz temblar el asfalto.\nRompe sus filas.\nQue la ciudad
     sepa que los humanos a\xFAn luchan.\n< ESPACIO para continuar>"
   typingSpeed: 0.02
-  nextSceneName: GameScene
+  nextSceneName: ciudad
 --- !u!4 &902657317
 Transform:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour, IDamageable
 {
@@ -10,6 +11,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private Vector3 startPosition;
     private Quaternion startRotation;
     private Rigidbody rb;
+
+    public static string lastLevel;
 
     void Start()
     {
@@ -30,7 +33,9 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0f)
         {
-            Respawn();
+            lastLevel = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene("GameOver");
+            //Respawn();
         }
     }
 
