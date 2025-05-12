@@ -16,6 +16,7 @@ public class LoreSceneSingle : MonoBehaviour
 
     void Start()
     {
+        ChangeMusicForScene();
         StartCoroutine(TypeText());
     }
 
@@ -52,5 +53,22 @@ public class LoreSceneSingle : MonoBehaviour
 
         isTyping = false;
         finishedTyping = true;
+    }
+
+    void ChangeMusicForScene()
+    {
+        // Detectamos qué escena está activa y cambiamos la canción
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (GameMusicManager.Instance == null) return;
+
+        if (sceneName == "Dialogo_bosque")
+        {
+            GameMusicManager.Instance.PlayTrack(1); // Música 2
+        }
+        else if (sceneName == "Dialogo_isla")
+        {
+            GameMusicManager.Instance.PlayTrack(2); // Música 3
+        }
     }
 }
