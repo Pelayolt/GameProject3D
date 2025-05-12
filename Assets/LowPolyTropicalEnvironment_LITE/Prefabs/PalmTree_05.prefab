@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6721412949723261072}
   - component: {fileID: 1953822120978522081}
+  - component: {fileID: -5248606150334591127}
   m_Layer: 0
   m_Name: PalmTree_05
   m_TagString: Untagged
@@ -148,6 +149,26 @@ LODGroup:
     renderers:
     - renderer: {fileID: 260911842447912950}
   m_Enabled: 0
+--- !u!114 &-5248606150334591127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200491160025657898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &6491973284005232940
 GameObject:
   m_ObjectHideFlags: 0
