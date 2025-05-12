@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void Juego()
     {
-        SceneManager.LoadScene("ciudad");
+        SceneManager.LoadScene("Dialogo_inicial");
     }
 
     public void Options(){

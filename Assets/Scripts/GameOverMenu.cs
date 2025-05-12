@@ -23,4 +23,9 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene("Titulo");
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 }
