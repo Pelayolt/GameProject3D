@@ -223,7 +223,7 @@ MonoBehaviour:
     ruido.\n\nPero t\xFA tambi\xE9n has cambiado.\n\nMu\xE9vete como la niebla. Golpea
     como un trueno.\nQue este bosque vuelva a ser nuestro.\n< ESPACIO para continuar>"
   typingSpeed: 0.02
-  nextSceneName: GameScene
+  nextSceneName: bosque
 --- !u!4 &902657317
 Transform:
   m_ObjectHideFlags: 0

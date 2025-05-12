@@ -17,6 +17,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: c0267b65be3469d4a8ad5149519c0922
+  - enabled: 1
+    path: Assets/Scenes/bosque.unity
+    guid: 2176f47a57aadf49cacb05538ce5f9cf
+  - enabled: 1
+    path: Assets/Scenes/Tropical.unity
+    guid: 62135fb624133b640bdabdc8791b53de
+  - enabled: 1
+    path: Assets/Scenes/Dialogo_bosque.unity
+    guid: e1772527efe0392448c9988733f3e27d
+  - enabled: 1
+    path: Assets/Scenes/Dialogo_final.unity
+    guid: f302b6ca7c80c5740b4eb9163f1ce989
+  - enabled: 1
+    path: Assets/Scenes/Dialogo_inicial.unity
+    guid: 4f78fd9a24536964a91180bfe8ada0a0
+  - enabled: 1
+    path: Assets/Scenes/Dialogo_isla.unity
+    guid: dba842defb83d4145b625b191155450e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
     public float maxHealth = 100f;
     private float currentHealth;
+    public bool isBoss = false;
+    public string nextSceneName = "LoreAfterBoss";
+
 
     public GameObject deathVFX;
 
@@ -42,6 +46,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if (currentHealth <= 0f)
         {
             Die();
+            if (isBoss)
+            {
+                SceneManager.LoadScene(nextSceneName);
+            }
         }
     }
 
