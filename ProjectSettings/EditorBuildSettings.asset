@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dialogo_isla.unity
     guid: dba842defb83d4145b625b191155450e
+  - enabled: 1
+    path: Assets/Scenes/Dialogo_ciudad.unity
+    guid: c7a9286cf19c8f944bf2b3a6acd50e15
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
