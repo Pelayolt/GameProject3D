@@ -224,7 +224,7 @@ MonoBehaviour:
     t\xFA...\nt\xFA fuiste el primer disparo en la \xFAltima batalla.\n< ESPACIO
     para continuar>"
   typingSpeed: 0.0001
-  nextSceneName: GameScene
+  nextSceneName: Titulo
 --- !u!4 &902657317
 Transform:
   m_ObjectHideFlags: 0
