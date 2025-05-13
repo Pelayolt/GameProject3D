@@ -24,25 +24,6 @@ public class TankShooting : MonoBehaviour
             flamethrower.StopFire();
         }
         
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            EquipWeapon(0); // Equipa la primera arma
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            EquipWeapon(1); // Equipa la segunda arma
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            EquipWeapon(2); // Equipa la segunda arma
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            EquipWeapon(3); // Equipa el tercer arma
-        }
     }
 
     public void EquipWeapon(int index)
