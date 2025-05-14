@@ -211,7 +211,7 @@ public class AIControl : MonoBehaviour
     void RotateTurretTowardsPlayer()
     {
         Vector3 direction = playerPosition - turret.position;
-        direction.y = 0f;
+        //direction.y = 0f;
 
         if (direction.sqrMagnitude > 0.01f)
         {

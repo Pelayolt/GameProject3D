@@ -70,16 +70,4 @@ public class HealthSystem : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
         UpdateHealthUI();
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            TakeDamage(10f);
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Heal(10f);
-        }
-    }
 }
